@@ -40,7 +40,9 @@ public class SpawnManager : MonoBehaviour
     void SpawnEnemy(GameObject spawnPoint) {
         GameObject enemy = Instantiate(enemyPrefab, spawnPoint.transform.position, Quaternion.identity);
         // Set the parent of the enemy to the spawn point
+        Debug.Log(Enemy.enemyCount);
         enemy.transform.parent = spawnPoint.transform;
+        enemy.GetComponent<Enemy>().player = player;
     }
     
 
@@ -51,7 +53,7 @@ public class SpawnManager : MonoBehaviour
 
         if (furthestN != null) {
             foreach (GameObject point in furthestN) {
-                if (Random.Range(0, 1000) < 10) {
+                if (Random.Range(0, 100) < 5) {
                     SpawnEnemy(point);
                 }
             }
