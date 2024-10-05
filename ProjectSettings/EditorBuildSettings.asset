@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/start.unity
+    guid: 10a0cdce51c27444a9c0cf4d5ba36ba8
+  - enabled: 1
+    path: Assets/Scenes/gameState.unity
+    guid: de6c7213522260644aa7cbdcb8560a88
+  - enabled: 1
+    path: Assets/Scenes/spawner_test.unity
+    guid: 6d801ff387aa69c4ca13f073e7c3f258
   m_configObjects: {}

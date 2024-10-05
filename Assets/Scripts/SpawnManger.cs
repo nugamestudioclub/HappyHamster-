@@ -48,7 +48,8 @@ public class SpawnManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {           
+    {
+        if (LevelManager.isGameOver) { return;  }
         List<GameObject> furthestN = GetFurthestN(spawners, active_spawners);
 
         if (furthestN != null) {

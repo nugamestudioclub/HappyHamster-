@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     const int MAP_SIZE = 57/2;
     const int PLAYER_SAFE_DISTANCE = 10;
     public float speed = 20000f; // in units per second
-
+    public int MAXFORCE = 10;
 
     void SetRandomTarget() {
         _target = new Vector2(Random.Range(-MAP_SIZE, MAP_SIZE), Random.Range(-MAP_SIZE, MAP_SIZE));
@@ -31,7 +31,12 @@ public class Enemy : MonoBehaviour
     }
 
     void Push(Vector2 direction) {
-        gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(direction.x, direction.y, 0) * speed * Time.deltaTime);
+        Vector3 newForce = new Vector3(direction.x, direction.y, 0) * speed * Time.deltaTime;
+        gameObject.GetComponent<Rigidbody2D>().AddForce(newForce);
+        if (gameObject.GetComponent<Rigidbody2D>().totalForce.magnitude >= MAXFORCE) 
+        {
+            gameObject.GetComponent<Rigidbody2D>().AddForce(-1 * newForce);
+        }
 
 
         spriteRenderer.flipX = (direction.x >= 0);

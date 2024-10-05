@@ -19,6 +19,6 @@ public class StartGame : MonoBehaviour
 
     public void StartRound() 
     {
-        SceneManager.LoadScene("gameState");
+        SceneManager.LoadScene("spawner_test");
     }
 }

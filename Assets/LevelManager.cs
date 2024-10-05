@@ -24,9 +24,6 @@ public class LevelManager : MonoBehaviour
     private Slider enemiesOnScreen;
     public static bool isGameOver = false;
 
-    [SerializeField]
-    private string mainMenuGame;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +33,7 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        currentHamsters = Enemy.enemyCount;
         if (curTime <= 0)
         {
             FinishGame();
@@ -65,13 +62,14 @@ public class LevelManager : MonoBehaviour
     void FinishGame()
     {
         isGameOver = true;
-        Time.timeScale = 0;
         endScreen.SetActive(true);
+        Time.timeScale = 0f;
     }
 
 
     public void onFinishClick()
     {
+        Debug.Log("here!");
         Time.timeScale = 1;
         SceneManager.LoadScene("start");
     }

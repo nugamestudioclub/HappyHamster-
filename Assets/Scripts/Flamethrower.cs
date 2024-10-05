@@ -5,34 +5,12 @@ using UnityEngine;
 
 public class Flamethrower : MonoBehaviour
 {
-    [SerializeField]
-    private float _maxHeat;
-    [SerializeField]
-    private float _heatRate;
-    [SerializeField]
-    private float _cooldownRate;
-    [SerializeField]
-    private float _fastCoolRate;
-    [SerializeField]
-    private float _slowCoolRate;
-
-    [SerializeField]
-    private float _overheatEventDuration;
-    [SerializeField]
-    private float _quickCoolStart;
-    [SerializeField]
-    private float _quickCoolEnd;
 
     [SerializeField]
     private Vector2 hitboxCenter;
     [SerializeField] 
     private Vector2 hitboxSize;
 
-
-    [SerializeField]
-    private float _currentHeat = 0f;
-    private float _overheatTimer;
-    [SerializeField]
     private bool _firing = false;
     private Collider2D _collider;
     private SpriteRenderer _spriteRenderer;
@@ -50,6 +28,7 @@ public class Flamethrower : MonoBehaviour
 
     void Update()
     {
+        if (LevelManager.isGameOver) { return; }
         if (Input.GetAxisRaw("Fire1") != 0 && !overheat.isOverheated && !_firing)
         {
             Fire();
@@ -62,10 +41,8 @@ public class Flamethrower : MonoBehaviour
 
         if (_firing)
         {
-
-            foreach (Collider2D obj in Physics2D.OverlapBoxAll(hitboxCenter, hitboxSize, _pointer.rotation.z))
+            foreach (Collider2D obj in Physics2D.OverlapBoxAll(transform.position, hitboxSize, _pointer.rotation.z))
             {
-                Debug.Log("Hit");
                 Enemy enemy = obj.gameObject.GetComponent<Enemy>();
                 if (enemy != null) 
                 {
@@ -86,11 +63,17 @@ public class Flamethrower : MonoBehaviour
         _spriteRenderer.enabled = false;
     }
 
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (_firing && collision.gameObject.tag.Equals("Enemy"))
         {
             collision.GetComponent<Enemy>().Kill();
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawCube(transform.position, hitboxSize);
     }
 }

@@ -131,6 +131,7 @@ MonoBehaviour:
   enemyBody: {fileID: 0}
   spriteRenderer: {fileID: 7829893794108325998}
   speed: 1
+  MAXFORCE: 1000
 --- !u!58 &3042407976051814625
 CircleCollider2D:
   m_ObjectHideFlags: 0
