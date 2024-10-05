@@ -6,35 +6,51 @@ using UnityEngine;
 public class Flamethrower : MonoBehaviour
 {
     [SerializeField]
-    private float _maxFuel;
+    private float _maxHeat;
     [SerializeField]
-    private float _fuelSpendRate;
+    private float _heatRate;
     [SerializeField]
-    private float _fuelRefillRate;
+    private float _cooldownRate;
 
-    private float _currentFuel;
+    [SerializeField]
+    private float _overheatEventDuration;
+    [SerializeField]
+    private float _quickCoolStart;
+    [SerializeField]
+    private float _quickCoolEnd;
+
+    private float _currentHeat;
     private bool _firing;
+    private bool _cooling;
     private Collider2D _collider;
     private SpriteRenderer _spriteRenderer;
     void Start()
     {
         _firing = false;
+        _cooling = false;
         _collider = this.GetComponent<Collider2D>();
         _spriteRenderer = this.GetComponent<SpriteRenderer>();
-        _currentFuel = _maxFuel;
+        _currentHeat = 0f;
     }
 
     void Update()
     {
+        if (Input.GetAxisRaw("Fire1") > 0 && !_firing)
+        {
+            Fire();
+        } else if (_firing) {
+            Cease();
+        }
+
         if (_firing)
         {
-            _currentFuel -= _fuelSpendRate * Time.deltaTime;
-            if (_currentFuel <= 0)
+            _currentHeat += _heatRate * Time.deltaTime;
+            if (_currentHeat >= _maxHeat)
             {
-                Cease();
+                Overheat();
             }
-        } else if (_currentFuel < _maxFuel){
-            _currentFuel += _fuelRefillRate * Time.deltaTime;
+        } else if (_currentHeat > 0 && _cooling){
+            _currentHeat -= _cooldownRate * Time.deltaTime;
         }
     }
 
@@ -57,4 +73,11 @@ public class Flamethrower : MonoBehaviour
             collision.gameObject.GetComponent<Enemy>().Kill();
         }
     }
+
+    void Overheat()
+    {
+        Cease();
+
+    }
+
 }

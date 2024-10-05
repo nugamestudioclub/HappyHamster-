@@ -14,31 +14,22 @@ public class ComboMultiplier : MonoBehaviour
     public float score;
 
 
-    private int _enemiesKilled;
+    private int _enemiesKilled = 0;
     private float _scoreMult;
     private int _nextKillThreshhold;
+    private int _comboValIndex = 0;
 
     private bool _onKillingSpree;
     private float _timeSpreeStarted;
-    private float _timer;
-
-    private void Start()
-    {
-        _timer = 0.0f;
-        _scoreMult = 1.0f;
-        _enemiesKilled = 0;
-    }
+    private float _currentTime = 0.0f;
 
     void Update()
     {
-        _timer += Time.deltaTime;
+        _currentTime += Time.deltaTime;
 
-        if (_onKillingSpree && (_timer - _timeSpreeStarted) >= _comboTime && _enemiesKilled < _nextKillThreshhold)
+        if (_onKillingSpree && (_currentTime - _timeSpreeStarted) >= _comboTime && _enemiesKilled < _nextKillThreshhold)
         {
-            _onKillingSpree = false;
-            _scoreMult = 1.0f;
-            _enemiesKilled = 0;
-            _nextKillThreshhold = _comboValues.threshholds[1];
+            startTheCombo();
         }
     }
 
@@ -48,21 +39,42 @@ public class ComboMultiplier : MonoBehaviour
 
         if (!_onKillingSpree)
         {
-            _onKillingSpree = true;
-            _scoreMult = _comboValues.mults[0];
-            _nextKillThreshhold = _comboValues.threshholds[0];
-            _timeSpreeStarted = _timer;
+            startTheCombo();
         } 
         else if (_onKillingSpree && (_enemiesKilled >= _nextKillThreshhold))
         {
-            if (_comboValues.mults.IndexOf(_scoreMult) + 1 <= _comboValues.mults.Count)
+            if (_comboValIndex <= _comboValues.mults.Count - 1)
             {
-                _scoreMult = _comboValues.mults[_comboValues.mults.IndexOf(_scoreMult) + 1];
-                _nextKillThreshhold = _comboValues.threshholds[_comboValues.threshholds.IndexOf(_nextKillThreshhold) + 1];
-                _timeSpreeStarted = _timer;
+                increaseTheCombo();
             }
         }
 
         score += _scoreMult;
+    }
+
+    void startTheCombo()
+    {
+        _onKillingSpree = true;
+        _scoreMult = 1.0f;
+        _nextKillThreshhold = _comboValues.threshholds[0];
+        _timeSpreeStarted = _currentTime;
+
+    }
+
+    void increaseTheCombo()
+    {
+        _comboValIndex++;
+        _scoreMult = _comboValues.mults[_comboValIndex];
+        _nextKillThreshhold = _comboValues.threshholds [_comboValIndex];
+        _timeSpreeStarted = _currentTime;
+    }
+
+    void dropTheCombo()
+    {
+        _onKillingSpree = false;
+        _comboValIndex = 0;
+        _scoreMult = _comboValues.mults[0];
+        _enemiesKilled = 0;
+        _nextKillThreshhold = _comboValues.threshholds[0];
     }
 }
