@@ -673,12 +673,15 @@ MonoBehaviour:
   _overheatEventDuration: 3
   _quickCoolStart: 2
   _quickCoolEnd: 3
+  hitboxCenter: {x: 1, y: 0}
+  hitboxSize: {x: 2, y: 1}
   _currentHeat: 0
   _firing: 0
   _reloading: 0
   _slowCooling: 0
   _normalCooling: 0
   _fastCooling: 0
+  _pointer: {fileID: 949507301}
 --- !u!1 &1956951318
 GameObject:
   m_ObjectHideFlags: 0

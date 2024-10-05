@@ -24,6 +24,12 @@ public class Flamethrower : MonoBehaviour
     private float _quickCoolEnd;
 
     [SerializeField]
+    private Vector2 hitboxCenter;
+    [SerializeField] 
+    private Vector2 hitboxSize;
+
+
+    [SerializeField]
     private float _currentHeat = 0f;
     private float _overheatTimer;
     [SerializeField]
@@ -38,6 +44,8 @@ public class Flamethrower : MonoBehaviour
     private bool _fastCooling = false;
     private Collider2D _collider;
     private SpriteRenderer _spriteRenderer;
+    [SerializeField]
+    private Transform _pointer;
 
     void Start()
     {
@@ -82,7 +90,7 @@ public class Flamethrower : MonoBehaviour
                 }
             }
 
-            foreach (Collider obj in Physics.OverlapCapsule(Vector3.zero, Vector3.right, 0.5f))
+            foreach (Collider2D obj in Physics2D.OverlapBoxAll(hitboxCenter, hitboxSize, _pointer.rotation.z))
             {
                 Enemy enemy = obj.GameObject().GetComponent<Enemy>();
                 if (enemy != null) 
