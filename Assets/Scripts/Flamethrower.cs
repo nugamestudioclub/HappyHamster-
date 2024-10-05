@@ -39,14 +39,11 @@ public class Flamethrower : MonoBehaviour
     private Collider2D _collider;
     private SpriteRenderer _spriteRenderer;
 
-    private Vector3 centerOfHitbox;
-    private Vector3 hitboxExtents;
     void Start()
     {
         _collider = this.GetComponent<Collider2D>();
         _spriteRenderer = this.GetComponent<SpriteRenderer>();
         _spriteRenderer.enabled = false;
-        //centerOfHitbox = new Vector3()
     }
 
     void Update()
@@ -82,6 +79,15 @@ public class Flamethrower : MonoBehaviour
                 if (Input.GetAxisRaw("Fire2") != 0)
                 {
                     playerReload(_overheatEventDuration - _overheatTimer);
+                }
+            }
+
+            foreach (Collider obj in Physics.OverlapCapsule(Vector3.zero, Vector3.right, 0.5f))
+            {
+                Enemy enemy = obj.GameObject().GetComponent<Enemy>();
+                if (enemy != null) 
+                {
+                    enemy.Kill();
                 }
             }
         }
