@@ -70,8 +70,9 @@ public class LevelManager : MonoBehaviour
     }
 
 
-    public void onFinishClick() 
+    public void onFinishClick()
     {
-        SceneManager.LoadScene("");
+        Time.timeScale = 1;
+        SceneManager.LoadScene("start");
     }
 }
