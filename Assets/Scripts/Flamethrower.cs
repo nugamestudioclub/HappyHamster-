@@ -36,6 +36,7 @@ public class Flamethrower : MonoBehaviour
     {
         _collider = this.GetComponent<Collider2D>();
         _spriteRenderer = this.GetComponent<SpriteRenderer>();
+        _spriteRenderer.enabled = false;
     }
 
     void Update()
