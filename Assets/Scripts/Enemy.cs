@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour
         Vector2 direction = transform.position - player.transform.position;
         if (direction.magnitude < PLAYER_SAFE_DISTANCE) {
             direction.Normalize();
-            Push(direction);
+            Push(direction * 2);
         } else {
             // Move towards random point
             Vector2 directionToTarget = _target - new Vector2(transform.position.x, transform.position.y);
