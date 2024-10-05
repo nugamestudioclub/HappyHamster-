@@ -1,39 +1,77 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
     [SerializeField]
-    private int maxHamsers = 500;
+    private int maxHamsters = 500;
+    [SerializeField]
     private int currentHamsters;
     [SerializeField]
     private float maxGracePeriod = 5f;
-    private float curTime;
+    private float curTime = 1f;
+    private bool isInGrace;
     [SerializeField]
-    Slider enemiesOnScreen;
+    private GameObject endScreen;
+    [SerializeField]
+    private TMP_Text timer;
+    [SerializeField]
+    private Slider enemiesOnScreen;
+    public static bool isGameOver = false;
 
+    [SerializeField]
+    private string mainMenuGame;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentHamsters = Enemy.enemyCount;
-        if (maxHamsers >= currentHamsters)
+
+        if (curTime <= 0)
         {
-            curTime += Time.deltaTime;
+            FinishGame();
+            return;
         }
-        else { curTime = 0f; }
-        if (curTime >= maxGracePeriod) 
+        if (maxHamsters <= currentHamsters && isInGrace)
         {
-            //LOSING
+            curTime -= Time.deltaTime;
+            timer.text = curTime.ToString("0.00");
         }
-        enemiesOnScreen.value = Mathf.Max(1 - (currentHamsters / maxHamsers), 0);
+        else if (maxHamsters <= currentHamsters)
+        {
+            timer.gameObject.SetActive(true);
+            isInGrace = true;
+            curTime = maxGracePeriod;
+        }
+        else
+        {
+            timer.gameObject.SetActive(false);
+            curTime = maxGracePeriod;
+            isInGrace = false;
+        }
+        enemiesOnScreen.value = Mathf.Min((currentHamsters / (float)maxHamsters), 1);
+    }
+
+    void FinishGame()
+    {
+        isGameOver = true;
+        Time.timeScale = 0;
+        endScreen.SetActive(true);
+    }
+
+
+    public void onFinishClick() 
+    {
+        SceneManager.LoadScene("");
     }
 }

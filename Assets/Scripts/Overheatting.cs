@@ -53,7 +53,7 @@ public class Overheatting : MonoBehaviour
         float cooldownDif = maxCooldown - curCooldown;
 
         bool inQTETime = (cooldownDif > startCooldownQTE)  && (cooldownDif < startCooldownQTE + cooldownTimeQTE);
-        if (inQTETime && Input.GetMouseButtonDown(1) && !hasHitQTE)
+        if (inQTETime && Input.GetAxisRaw("Fire2") != 0 && !hasHitQTE)
         {
             
             if (!hasHitQTE) 
@@ -75,7 +75,7 @@ public class Overheatting : MonoBehaviour
 
     private void Firing() {
         overheatSlider.color = heatUpColor;
-        if (Input.GetMouseButton(0))
+        if (Input.GetAxisRaw("Fire1") != 0)
         {
             float rate = Time.deltaTime * (curHeat + .1f);
             curHeat = Mathf.Min(curHeat + rate, 1);
