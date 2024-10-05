@@ -32,9 +32,12 @@ public class Flamethrower : MonoBehaviour
 
         if (_firing)
         {
+
+            Debug.Log(Physics.OverlapCapsule(Vector3.zero, Vector3.right, 0.5f).Length);
             foreach (Collider obj in Physics.OverlapCapsule(Vector3.zero, Vector3.right, 0.5f))
             {
-                Enemy enemy = obj.GameObject().GetComponent<Enemy>();
+                Debug.Log("Hit");
+                Enemy enemy = obj.gameObject.GetComponent<Enemy>();
                 if (enemy != null) 
                 {
                     enemy.Kill();

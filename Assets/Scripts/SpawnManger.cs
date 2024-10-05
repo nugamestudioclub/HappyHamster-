@@ -40,7 +40,7 @@ public class SpawnManager : MonoBehaviour
     void SpawnEnemy(GameObject spawnPoint) {
         GameObject enemy = Instantiate(enemyPrefab, spawnPoint.transform.position, Quaternion.identity);
         // Set the parent of the enemy to the spawn point
-        Debug.Log(Enemy.enemyCount);
+        // Debug.Log(Enemy.enemyCount);
         enemy.transform.parent = spawnPoint.transform;
         enemy.GetComponent<Enemy>().player = player;
     }
