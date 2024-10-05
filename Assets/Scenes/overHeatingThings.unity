@@ -524,6 +524,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3326954108161617756, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
+      propertyPath: _maxHeat
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3326954108161617756, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
+      propertyPath: overheat
+      value: 
+      objectReference: {fileID: 474874943}
+    - target: {fileID: 3326954108161617756, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
+      propertyPath: _heatRate
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3326954108161617756, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
+      propertyPath: _cooldownRate
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3326954108161617756, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
+      propertyPath: _fastCoolRate
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3326954108161617756, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
+      propertyPath: _slowCoolRate
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7315817422585722079, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
       propertyPath: m_Name
       value: Player

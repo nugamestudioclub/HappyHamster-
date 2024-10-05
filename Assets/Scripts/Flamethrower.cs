@@ -34,18 +34,11 @@ public class Flamethrower : MonoBehaviour
     private float _overheatTimer;
     [SerializeField]
     private bool _firing = false;
-    [SerializeField]
-    private bool _reloading = false;
-    [SerializeField]
-    private bool _slowCooling = false;
-    [SerializeField]
-    private bool _normalCooling = false;
-    [SerializeField]
-    private bool _fastCooling = false;
     private Collider2D _collider;
     private SpriteRenderer _spriteRenderer;
     [SerializeField]
     private Transform _pointer;
+    Overheatting overheat;
 
     void Start()
     {
@@ -56,112 +49,46 @@ public class Flamethrower : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetAxisRaw("Fire1") != 0 && !_firing && !(_slowCooling || _fastCooling))
+        if (Input.GetAxisRaw("Fire1") != 0 && !overheat.isOverheated)
         {
-            _normalCooling = false;
             Fire();
         }
-        else if (Input.GetAxisRaw("Fire1") == 0 && _firing)
+        else 
         {
             Cease();
-            _normalCooling = true;
         }
 
         if (_firing)
         {
-            _currentHeat += _heatRate * Time.deltaTime;
-            if (_currentHeat >= _maxHeat)
-            {
-                Overheat();
-            }
-
-            if (_reloading)
-            {
-                _overheatTimer -= Time.deltaTime;
-
-                if (_overheatTimer <= 0)
-                {
-                    _reloading = false;
-                }
-
-                if (Input.GetAxisRaw("Fire2") != 0)
-                {
-                    playerReload(_overheatEventDuration - _overheatTimer);
-                }
-            }
 
             foreach (Collider2D obj in Physics2D.OverlapBoxAll(hitboxCenter, hitboxSize, _pointer.rotation.z))
             {
-                Enemy enemy = obj.GameObject().GetComponent<Enemy>();
+                Debug.Log("Hit");
+                Enemy enemy = obj.gameObject.GetComponent<Enemy>();
                 if (enemy != null) 
                 {
                     enemy.Kill();
                 }
             }
         }
+    }
+    void Fire()
+    {
+        _firing = true;
+        _spriteRenderer.enabled = true;
+    }
 
-        if (_normalCooling)
+    void Cease()
+    {
+        _firing = false;
+        _spriteRenderer.enabled = false;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (_firing && collision.gameObject.tag.Equals("Enemy"))
         {
-            _currentHeat -= _cooldownRate * Time.deltaTime;
-
+            collision.GetComponent<Enemy>().Kill();
         }
-
-        if (_fastCooling)
-        {
-            _currentHeat -= _fastCoolRate * Time.deltaTime;
-        }
-
-        if (_slowCooling)
-        {
-            _currentHeat -= _slowCoolRate * Time.deltaTime;
-        }
-
-        if (_currentHeat <= 0)
-        {
-            _normalCooling = false;
-            _fastCooling = false;
-            _slowCooling = false;
-        }
-
-        void Fire()
-        {
-            _firing = true;
-            _spriteRenderer.enabled = true;
-        }
-
-        void Cease()
-        {
-            _firing = false;
-            _spriteRenderer.enabled = false;
-        }
-
-        void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (_firing && collision.gameObject.tag.Equals("Enemy"))
-            {
-                collision.GetComponent<Enemy>().Kill();
-            }
-        }
-
-        void Overheat()
-        {
-            Cease();
-            _overheatTimer = _overheatEventDuration;
-            _reloading = true;
-        }
-
-        void playerReload(float timeReloadPressed)
-        {
-            _reloading = false;
-            if (timeReloadPressed > _quickCoolStart && timeReloadPressed < _quickCoolEnd)
-            {
-                _fastCooling = true;
-            }
-            else
-            {
-                _slowCooling = true;
-            }
-        }
-
     }
 }
