@@ -1024,6 +1024,7 @@ MonoBehaviour:
   endScreen: {fileID: 1744372541}
   timer: {fileID: 827620044}
   enemiesOnScreen: {fileID: 958012518}
+  mainMenuGame: 
 --- !u!1 &1142759409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1383,7 +1384,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1426866440}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1091418941}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: onFinishClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1426866440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1470,6 +1483,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3326954108161617756, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
+      propertyPath: overheat
+      value: 
+      objectReference: {fileID: 474874943}
     - target: {fileID: 7315817422585722079, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1778,7 +1795,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1744372542
 RectTransform:
   m_ObjectHideFlags: 0
