@@ -5,6 +5,14 @@ using UnityEngine;
 
 public class Flamethrower : MonoBehaviour
 {
+    [SerializeField]
+    private float _maxFuel;
+    [SerializeField]
+    private float _fuelSpendRate;
+    [SerializeField]
+    private float _fuelRefillRate;
+
+    private float _currentFuel;
     private bool _firing;
     private Collider2D _collider;
     private SpriteRenderer _spriteRenderer;
@@ -13,11 +21,21 @@ public class Flamethrower : MonoBehaviour
         _firing = false;
         _collider = this.GetComponent<Collider2D>();
         _spriteRenderer = this.GetComponent<SpriteRenderer>();
+        _currentFuel = _maxFuel;
     }
 
     void Update()
     {
-        
+        if (_firing)
+        {
+            _currentFuel -= _fuelSpendRate * Time.deltaTime;
+            if (_currentFuel <= 0)
+            {
+                Cease();
+            }
+        } else if (_currentFuel < _maxFuel){
+            _currentFuel += _fuelRefillRate * Time.deltaTime;
+        }
     }
 
     void Fire()
@@ -32,9 +50,9 @@ public class Flamethrower : MonoBehaviour
         _spriteRenderer.enabled = false;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (_firing && collision.gameObject.tag == "Enemy")
+        if (_firing && collision.gameObject.tag.Equals("Enemy"))
         {
             //replace with call to kill enemy
             Debug.Log("hit an enemy");

@@ -6,15 +6,14 @@ using UnityEngine;
 public class ComboMultiplier : MonoBehaviour
 {
     [SerializeField]
-    private int _enemiesKilled;
-    [SerializeField]
     private float _comboTime = 10;
     [SerializeField]
     private ComboValues _comboValues;
 
 
+    private int _enemiesKilled;
     private float _scoreMult;
-    private float _nextKillThreshhold;
+    private int _nextKillThreshhold;
 
     private bool _onKillingSpree;
     private float _timeSpreeStarted;
@@ -24,6 +23,7 @@ public class ComboMultiplier : MonoBehaviour
     {
         _timer = 0.0f;
         _scoreMult = 1.0f;
+        _enemiesKilled = 0;
     }
 
     void Update()
@@ -34,17 +34,20 @@ public class ComboMultiplier : MonoBehaviour
         {
             _onKillingSpree = false;
             _scoreMult = 1.0f;
-            _nextKillThreshhold = _comboValues.mults[1];
+            _enemiesKilled = 0;
+            _nextKillThreshhold = _comboValues.threshholds[1];
         }
     }
 
     void killedEnemy()
     {
+        _enemiesKilled += 1;
+
         if (!_onKillingSpree)
         {
             _onKillingSpree = true;
-            _scoreMult = _comboValues.mults[1];
-            _nextKillThreshhold = _comboValues.threshholds[1];
+            _scoreMult = _comboValues.mults[0];
+            _nextKillThreshhold = _comboValues.threshholds[0];
             _timeSpreeStarted = _timer;
         } 
         else if (_onKillingSpree && (_enemiesKilled >= _nextKillThreshhold))
