@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour
             case EnemyState.Run:
                 direction = -direction;
                 direction.Normalize();
-                acceleration = 2f;
+                acceleration = 5f;
                 break;
             case EnemyState.Idle:
                 direction = Vector2.zero;

@@ -398,6 +398,9 @@ MonoBehaviour:
   cooldownTimeQTE: 0.5
   coolDownQTEText: {fileID: 1485689147}
   isOverheated: 0
+  baseCoolRate: 1
+  fastCoolRate: 3
+  slowCoolRate: 0.5
 --- !u!1 &351865471
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,7 +876,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 20
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
