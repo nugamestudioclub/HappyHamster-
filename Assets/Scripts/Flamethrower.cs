@@ -23,12 +23,18 @@ public class Flamethrower : MonoBehaviour
     [SerializeField]
     private float _quickCoolEnd;
 
+    [SerializeField]
     private float _currentHeat = 0f;
     private float _overheatTimer;
+    [SerializeField]
     private bool _firing = false;
+    [SerializeField]
     private bool _reloading = false;
+    [SerializeField]
     private bool _slowCooling = false;
+    [SerializeField]
     private bool _normalCooling = false;
+    [SerializeField]
     private bool _fastCooling = false;
     private Collider2D _collider;
     private SpriteRenderer _spriteRenderer;
@@ -36,6 +42,7 @@ public class Flamethrower : MonoBehaviour
     {
         _collider = this.GetComponent<Collider2D>();
         _spriteRenderer = this.GetComponent<SpriteRenderer>();
+        _spriteRenderer.enabled = false;
     }
 
     void Update()
