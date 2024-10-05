@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
 
     public Rigidbody2D enemyBody;
 
+    public SpriteRenderer spriteRenderer;
+
     Vector2 _target = Vector2.zero;
 
     const int MAP_SIZE = 57/2;
@@ -30,6 +32,9 @@ public class Enemy : MonoBehaviour
 
     void Push(Vector2 direction) {
         gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(direction.x, direction.y, 0) * speed * Time.deltaTime);
+
+
+        spriteRenderer.flipX = (direction.x >= 0);
     }
 
     // Update is called once per frame
