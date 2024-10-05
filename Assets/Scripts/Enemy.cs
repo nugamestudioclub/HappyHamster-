@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
+    public static int enemyCount;
     public GameObject player;
 
     Vector2 _target = Vector2.zero;
@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        enemyCount += 1;
     }
 
     void SetRandomTarget() {
@@ -50,5 +50,12 @@ public class Enemy : MonoBehaviour
     {
         // TODO: Death vfx and animations and score
         Destroy(gameObject);
+    }
+
+
+
+    private void OnDestroy()
+    {
+        enemyCount--;
     }
 }
