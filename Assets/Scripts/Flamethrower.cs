@@ -11,6 +11,10 @@ public class Flamethrower : MonoBehaviour
     private float _heatRate;
     [SerializeField]
     private float _cooldownRate;
+    [SerializeField]
+    private float _fastCoolRate;
+    [SerializeField]
+    private float _slowCoolRate;
 
     [SerializeField]
     private float _overheatEventDuration;
@@ -19,27 +23,32 @@ public class Flamethrower : MonoBehaviour
     [SerializeField]
     private float _quickCoolEnd;
 
-    private float _currentHeat;
-    private bool _firing;
-    private bool _cooling;
+    private float _currentHeat = 0f;
+    private float _overheatTimer;
+    private bool _firing = false;
+    private bool _reloading = false;
+    private bool _slowCooling = false;
+    private bool _normalCooling = false;
+    private bool _fastCooling = false;
     private Collider2D _collider;
     private SpriteRenderer _spriteRenderer;
     void Start()
     {
-        _firing = false;
-        _cooling = false;
         _collider = this.GetComponent<Collider2D>();
         _spriteRenderer = this.GetComponent<SpriteRenderer>();
-        _currentHeat = 0f;
     }
 
     void Update()
     {
-        if (Input.GetAxisRaw("Fire1") > 0 && !_firing)
+        if (Input.GetAxisRaw("Fire1") != 0 && !_firing && !(_slowCooling || _fastCooling))
         {
+            _normalCooling = false;
             Fire();
-        } else if (_firing) {
+        }
+        else if (Input.GetAxisRaw("Fire1") == 0 && _firing)
+        {
             Cease();
+            _normalCooling = true;
         }
 
         if (_firing)
@@ -49,35 +58,85 @@ public class Flamethrower : MonoBehaviour
             {
                 Overheat();
             }
-        } else if (_currentHeat > 0 && _cooling){
-            _currentHeat -= _cooldownRate * Time.deltaTime;
+
+            if (_reloading)
+            {
+                _overheatTimer -= Time.deltaTime;
+
+                if (_overheatTimer <= 0)
+                {
+                    _reloading = false;
+                }
+
+                if (Input.GetAxisRaw("Fire2") != 0)
+                {
+                    playerReload(_overheatEventDuration - _overheatTimer);
+                }
+            }
+
+            if (_normalCooling)
+            {
+                _currentHeat -= _cooldownRate * Time.deltaTime;
+
+            }
+
+            if (_fastCooling)
+            {
+                _currentHeat -= _fastCoolRate * Time.deltaTime;
+            }
+
+            if (_slowCooling)
+            {
+                _currentHeat -= _slowCoolRate * Time.deltaTime;
+            }
+
+            if (_currentHeat <= 0)
+            {
+                _normalCooling = false;
+                _fastCooling = false;
+                _slowCooling = false;
+            }
         }
-    }
 
-    void Fire()
-    {
-        _firing = true;
-        _spriteRenderer.enabled = true;
-    }
-
-    void Cease()
-    {
-        _firing = false;
-        _spriteRenderer.enabled = false;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (_firing && collision.gameObject.tag.Equals("Enemy"))
+        void Fire()
         {
-            collision.gameObject.GetComponent<Enemy>().Kill();
+            _firing = true;
+            _spriteRenderer.enabled = true;
         }
+
+        void Cease()
+        {
+            _firing = false;
+            _spriteRenderer.enabled = false;
+        }
+
+        void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (_firing && collision.gameObject.tag.Equals("Enemy"))
+            {
+                collision.gameObject.GetComponent<Enemy>().Kill();
+            }
+        }
+
+        void Overheat()
+        {
+            Cease();
+            _overheatTimer = _overheatEventDuration;
+            _reloading = true;
+        }
+
+        void playerReload(float timeReloadPressed)
+        {
+            _reloading = false;
+            if (timeReloadPressed > _quickCoolStart && timeReloadPressed < _quickCoolEnd)
+            {
+                _fastCooling = true;
+            }
+            else
+            {
+                _slowCooling = true;
+            }
+        }
+
     }
-
-    void Overheat()
-    {
-        Cease();
-
-    }
-
 }

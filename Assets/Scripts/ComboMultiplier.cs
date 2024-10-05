@@ -8,16 +8,17 @@ public class ComboMultiplier : MonoBehaviour
     [SerializeField]
     private float _comboTime = 10;
     [SerializeField]
-    private ComboValues _comboValues;
+    private int _initialThresh = 10;
+    [SerializeField]
+    private int _threshRate = 2;
 
     [HideInInspector]
     public float score;
 
 
     private int _enemiesKilled = 0;
-    private float _scoreMult;
+    private float _scoreMult = 1;
     private int _nextKillThreshhold;
-    private int _comboValIndex = 0;
 
     private bool _onKillingSpree;
     private float _timeSpreeStarted;
@@ -43,10 +44,7 @@ public class ComboMultiplier : MonoBehaviour
         } 
         else if (_onKillingSpree && (_enemiesKilled >= _nextKillThreshhold))
         {
-            if (_comboValIndex <= _comboValues.mults.Count - 1)
-            {
-                increaseTheCombo();
-            }
+            increaseTheCombo();
         }
 
         score += _scoreMult;
@@ -56,25 +54,23 @@ public class ComboMultiplier : MonoBehaviour
     {
         _onKillingSpree = true;
         _scoreMult = 1.0f;
-        _nextKillThreshhold = _comboValues.threshholds[0];
+        _nextKillThreshhold = _initialThresh;
         _timeSpreeStarted = _currentTime;
 
     }
 
     void increaseTheCombo()
     {
-        _comboValIndex++;
-        _scoreMult = _comboValues.mults[_comboValIndex];
-        _nextKillThreshhold = _comboValues.threshholds [_comboValIndex];
+        _scoreMult++;
+        _nextKillThreshhold *= _threshRate;
         _timeSpreeStarted = _currentTime;
     }
 
     void dropTheCombo()
     {
         _onKillingSpree = false;
-        _comboValIndex = 0;
-        _scoreMult = _comboValues.mults[0];
+        _scoreMult = 1;
         _enemiesKilled = 0;
-        _nextKillThreshhold = _comboValues.threshholds[0];
+        _nextKillThreshhold = _initialThresh;
     }
 }
