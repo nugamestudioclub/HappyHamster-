@@ -6,5 +6,5 @@ using UnityEngine;
 public class ComboValues : MonoBehaviour
 {
     public List<float> mults = new List<float>();
-    public List<float> threshholds = new List<float>();
+    public List<int> threshholds = new List<int>();
 }
