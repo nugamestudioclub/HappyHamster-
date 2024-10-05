@@ -27,7 +27,15 @@ public class Overheatting : MonoBehaviour
     public bool isOverheated = false;
     private bool hasHitQTE = false;
     private float cooldownRate = 1f;
+    private bool cooling = false;
 
+    //Noah here, added these floats for failing vs succeeding the QTE. Not sure if there's redundancy between these and the fields above
+    [SerializeField]
+    private float baseCoolRate = 1;
+    [SerializeField]
+    private float fastCoolRate = 3;
+    [SerializeField]
+    private float slowCoolRate = 0.5f;
 
     void Start()
     {
@@ -46,31 +54,50 @@ public class Overheatting : MonoBehaviour
         {
             Cooldown();    
         }
+
+        if (cooling)
+        {
+            curCooldown = Mathf.Max(curCooldown - Time.deltaTime * cooldownRate, 0f);
+            if (curCooldown == 0f)
+            {
+                isOverheated = false;
+                cooling = false;
+            }
+            slider.value = curCooldown / maxCooldown;
+        }
+
     }
 
     public void Cooldown() {
         overheatSlider.color = cooldownColor;
         float cooldownDif = maxCooldown - curCooldown;
 
-        bool inQTETime = (cooldownDif > startCooldownQTE)  && (cooldownDif < startCooldownQTE + cooldownTimeQTE);
-        if (inQTETime && Input.GetAxisRaw("Fire2") != 0 && !hasHitQTE)
+        if (!cooling)
         {
-            
-            if (!hasHitQTE) 
+            cooling = true;
+            cooldownRate = baseCoolRate;
+        }
+
+        bool inQTETime = (cooldownDif > startCooldownQTE)  && (cooldownDif < startCooldownQTE + cooldownTimeQTE);
+        if (Input.GetAxisRaw("Fire2") != 0 && !hasHitQTE && cooldownRate == baseCoolRate)
+        {
+
+            if (inQTETime)
             {
                 //GUST THINGS
-                cooldownRate = 3f;
+                cooldownRate = fastCoolRate;
+                hasHitQTE = true;
+            } else
+            {
+                cooldownRate = slowCoolRate;
                 hasHitQTE = true;
             }
         }
-        
-        coolDownQTEText.gameObject.SetActive(inQTETime);
-        
-        curCooldown = Mathf.Max(curCooldown - Time.deltaTime * cooldownRate, 0f);
-        if (curCooldown == 0f) {
-            isOverheated = false;
+
+        if (cooldownRate != slowCoolRate) 
+        {
+            coolDownQTEText.gameObject.SetActive(inQTETime);
         }
-        slider.value = curCooldown / maxCooldown;
     }
 
     private void Firing() {
