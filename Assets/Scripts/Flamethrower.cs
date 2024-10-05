@@ -38,6 +38,7 @@ public class Flamethrower : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     [SerializeField]
     private Transform _pointer;
+    [SerializeField]
     Overheatting overheat;
 
     void Start()
@@ -49,11 +50,12 @@ public class Flamethrower : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetAxisRaw("Fire1") != 0 && !overheat.isOverheated)
+        if (Input.GetAxisRaw("Fire1") != 0 && !overheat.isOverheated && !_firing)
         {
             Fire();
         }
-        else 
+
+        if (Input.GetAxisRaw("Fire1") == 0 || overheat.isOverheated)
         {
             Cease();
         }
