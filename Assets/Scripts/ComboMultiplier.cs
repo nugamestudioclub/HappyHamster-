@@ -10,6 +10,9 @@ public class ComboMultiplier : MonoBehaviour
     [SerializeField]
     private ComboValues _comboValues;
 
+    [HideInInspector]
+    public float score;
+
 
     private int _enemiesKilled;
     private float _scoreMult;
@@ -56,8 +59,10 @@ public class ComboMultiplier : MonoBehaviour
             {
                 _scoreMult = _comboValues.mults[_comboValues.mults.IndexOf(_scoreMult) + 1];
                 _nextKillThreshhold = _comboValues.threshholds[_comboValues.threshholds.IndexOf(_nextKillThreshhold) + 1];
+                _timeSpreeStarted = _timer;
             }
-            _timeSpreeStarted = _timer;
         }
+
+        score += _scoreMult;
     }
 }
