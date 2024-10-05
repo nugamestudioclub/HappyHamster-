@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField]
-    private int maxHamsters = 500;
+    private int maxHamsters = 2000;
     [SerializeField]
     private int currentHamsters;
     [SerializeField]

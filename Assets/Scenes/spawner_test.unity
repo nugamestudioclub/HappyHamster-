@@ -873,7 +873,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 30
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2474,13 +2474,13 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 3
   m_Points:
-  - {x: -0.5, y: -0.5}
-  - {x: -0.5, y: 0.5}
-  - {x: 0.5, y: 0.5}
-  - {x: 0.5, y: -0.5}
-  - {x: -0.5, y: -0.5}
+  - {x: -0.55, y: -0.55}
+  - {x: -0.55, y: 0.55}
+  - {x: 0.55, y: 0.55}
+  - {x: 0.55, y: -0.55}
+  - {x: -0.55, y: -0.55}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -2572,7 +2572,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c019eb54091d94045969fbdf3d9e7e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 326137005}
+  player: {fileID: 326137010}
+  distressSignals: {fileID: 473930929}
   active_spawners: 3
   enemyPrefab: {fileID: 907049277261265459, guid: 0afd1cd33fdeb2a47bb2f8835171d0ec, type: 3}
 --- !u!4 &2133166496

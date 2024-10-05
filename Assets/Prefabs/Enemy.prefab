@@ -100,7 +100,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.015
+  m_Mass: 0.1
   m_LinearDrag: 0
   m_AngularDrag: 100
   m_GravityScale: 0
@@ -127,11 +127,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7129f90ef5a734341b15ec6202c8e0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 7315817422585722079, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
-  enemyBody: {fileID: 0}
+  player: {fileID: 0}
+  distressSignals: {fileID: 0}
+  enemyKilledSignalPrefab: {fileID: 2883131632186979932, guid: dbd9831beab981d43af562a542371437, type: 3}
+  enemyBody: {fileID: 4822651128574908127}
   spriteRenderer: {fileID: 7829893794108325998}
-  speed: 1
-  MAXFORCE: 1000
+  acceleration: 1.2
 --- !u!58 &3042407976051814625
 CircleCollider2D:
   m_ObjectHideFlags: 0

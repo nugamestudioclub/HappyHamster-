@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject player; // Player object
+    public Transform player; // Player object
+    public GameObject distressSignals; // Player object
     List<GameObject> spawners; // List of spawners
     public int active_spawners; // How many spawners will be active at once
     public GameObject enemyPrefab;
@@ -20,10 +21,10 @@ public class SpawnManager : MonoBehaviour
     }
 
     // Sorts the points based on how far they are from the player and returns a sorted list
-    List<GameObject> SortObjectsByDistance(List<GameObject> spawners, GameObject player)
+    List<GameObject> SortObjectsByDistance(List<GameObject> spawners, Transform player)
     {
         // Sort by furthest to closest // Can change to OrderBy for the reverse order
-        return spawners.OrderByDescending(spawner => Vector3.Distance(player.transform.position, spawner.transform.position)).ToList();
+        return spawners.OrderByDescending(spawner => Vector3.Distance(player.position, spawner.transform.position)).ToList();
     }
 
     // Get the furthest GameObject from the player
@@ -42,7 +43,9 @@ public class SpawnManager : MonoBehaviour
         // Set the parent of the enemy to the spawn point
         // Debug.Log(Enemy.enemyCount);
         enemy.transform.parent = spawnPoint.transform;
-        enemy.GetComponent<Enemy>().player = player;
+        Enemy enemyScript = enemy.GetComponent<Enemy>();
+        enemyScript.player = player;
+        enemyScript.distressSignals = distressSignals;
     }
     
 

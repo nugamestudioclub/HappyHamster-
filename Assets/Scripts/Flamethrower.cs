@@ -12,6 +12,7 @@ public class Flamethrower : MonoBehaviour
     private Vector2 hitboxSize;
 
     private bool _firing = false;
+    private Collider2D _collider;
     private SpriteRenderer _spriteRenderer;
     [SerializeField]
     private Transform _pointer;
@@ -20,6 +21,7 @@ public class Flamethrower : MonoBehaviour
 
     void Start()
     {
+        _collider = this.GetComponent<Collider2D>();
         _spriteRenderer = this.GetComponent<SpriteRenderer>();
         _spriteRenderer.enabled = false;
     }
@@ -61,6 +63,14 @@ public class Flamethrower : MonoBehaviour
         _spriteRenderer.enabled = false;
     }
 
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (_firing && collision.gameObject.tag.Equals("Enemy"))
+        {
+            collision.GetComponent<Enemy>().Kill();
+        }
+    }
 
     private void OnDrawGizmos()
     {
