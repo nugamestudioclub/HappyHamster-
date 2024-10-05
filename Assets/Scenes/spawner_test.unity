@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f95de8c7f2428488a9804485cce498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHamsters: 500
+  maxHamsters: 2000
   currentHamsters: 1252
   maxGracePeriod: 5
   endScreen: {fileID: 396856306}
@@ -825,7 +825,7 @@ GameObject:
   m_Component:
   - component: {fileID: 793037258}
   - component: {fileID: 793037257}
-  - component: {fileID: 793037256}
+  - component: {fileID: 793037259}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -833,14 +833,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &793037256
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 793037255}
-  m_Enabled: 1
 --- !u!20 &793037257
 Camera:
   m_ObjectHideFlags: 0
@@ -907,6 +899,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 326137010}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &793037259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793037255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
 --- !u!1 &945460571
 GameObject:
   m_ObjectHideFlags: 0
