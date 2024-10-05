@@ -54,8 +54,7 @@ public class Flamethrower : MonoBehaviour
     {
         if (_firing && collision.gameObject.tag.Equals("Enemy"))
         {
-            //replace with call to kill enemy
-            Debug.Log("hit an enemy");
+            collision.gameObject.GetComponent<Enemy>().Kill();
         }
     }
 }

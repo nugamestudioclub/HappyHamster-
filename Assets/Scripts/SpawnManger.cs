@@ -5,19 +5,17 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject player; // Player object
-    public List<GameObject> spawners; // List of spawners
+    List<GameObject> spawners; // List of spawners
     public int active_spawners; // How many spawners will be active at once
+    public GameObject enemyPrefab;
 
     void Start()
     {
-        List<GameObject> furthest3 = GetFurthestN(spawners, active_spawners);
-
-        if (furthest3 != null)
+        // TODO: make the list of children without this array thing
+        spawners = new List<GameObject>(new GameObject[transform.childCount]);
+        for (int i = 0; i < transform.childCount; i++)
         {
-            foreach (GameObject point in furthest3)
-            {
-                Debug.Log("SPAWN AT: " + point.name);
-            }
+            spawners[i] = transform.GetChild(i).gameObject;
         }
     }
 
@@ -37,5 +35,26 @@ public class SpawnManager : MonoBehaviour
         List<GameObject> furthest_spawners = SortObjectsByDistance(spawners, player);
 
         return furthest_spawners.GetRange(0, n);
+    }
+
+    void SpawnEnemy(GameObject spawnPoint) {
+        GameObject enemy = Instantiate(enemyPrefab, spawnPoint.transform.position, Quaternion.identity);
+        // Set the parent of the enemy to the spawn point
+        enemy.transform.parent = spawnPoint.transform;
+    }
+    
+
+    // Update is called once per frame
+    void Update()
+    {           
+        List<GameObject> furthestN = GetFurthestN(spawners, active_spawners);
+
+        if (furthestN != null) {
+            foreach (GameObject point in furthestN) {
+                if (Random.Range(0, 1000) < 10) {
+                    SpawnEnemy(point);
+                }
+            }
+        }
     }
 }
