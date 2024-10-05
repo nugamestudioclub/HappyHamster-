@@ -80,29 +80,29 @@ public class Flamethrower : MonoBehaviour
                     playerReload(_overheatEventDuration - _overheatTimer);
                 }
             }
+        }
 
-            if (_normalCooling)
-            {
-                _currentHeat -= _cooldownRate * Time.deltaTime;
+        if (_normalCooling)
+        {
+            _currentHeat -= _cooldownRate * Time.deltaTime;
 
-            }
+        }
 
-            if (_fastCooling)
-            {
-                _currentHeat -= _fastCoolRate * Time.deltaTime;
-            }
+        if (_fastCooling)
+        {
+            _currentHeat -= _fastCoolRate * Time.deltaTime;
+        }
 
-            if (_slowCooling)
-            {
-                _currentHeat -= _slowCoolRate * Time.deltaTime;
-            }
+        if (_slowCooling)
+        {
+            _currentHeat -= _slowCoolRate * Time.deltaTime;
+        }
 
-            if (_currentHeat <= 0)
-            {
-                _normalCooling = false;
-                _fastCooling = false;
-                _slowCooling = false;
-            }
+        if (_currentHeat <= 0)
+        {
+            _normalCooling = false;
+            _fastCooling = false;
+            _slowCooling = false;
         }
 
         void Fire()
@@ -121,7 +121,7 @@ public class Flamethrower : MonoBehaviour
         {
             if (_firing && collision.gameObject.tag.Equals("Enemy"))
             {
-                collision.gameObject.GetComponent<Enemy>().Kill();
+                collision.GetComponent<Enemy>().Kill();
             }
         }
 
