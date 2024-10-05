@@ -38,11 +38,15 @@ public class Flamethrower : MonoBehaviour
     private bool _fastCooling = false;
     private Collider2D _collider;
     private SpriteRenderer _spriteRenderer;
+
+    private Vector3 centerOfHitbox;
+    private Vector3 hitboxExtents;
     void Start()
     {
         _collider = this.GetComponent<Collider2D>();
         _spriteRenderer = this.GetComponent<SpriteRenderer>();
         _spriteRenderer.enabled = false;
+        //centerOfHitbox = new Vector3()
     }
 
     void Update()
