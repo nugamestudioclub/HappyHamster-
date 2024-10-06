@@ -57,7 +57,7 @@ public class SpawnManager : MonoBehaviour
 
         if (furthestN != null) {
             foreach (GameObject point in furthestN) {
-                if (Random.Range(0, 100) < 5) {
+                if (Random.Range(0, 100) < 30) {
                     SpawnEnemy(point);
                 }
             }

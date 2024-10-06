@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8129043583460243982}
@@ -132,7 +132,7 @@ MonoBehaviour:
   enemyKilledSignalPrefab: {fileID: 2883131632186979932, guid: dbd9831beab981d43af562a542371437, type: 3}
   enemyBody: {fileID: 4822651128574908127}
   spriteRenderer: {fileID: 7829893794108325998}
-  acceleration: 1.2
+  maxVelocity: 0.2
 --- !u!58 &3042407976051814625
 CircleCollider2D:
   m_ObjectHideFlags: 0
