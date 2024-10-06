@@ -438,6 +438,9 @@ MonoBehaviour:
   cooldownTimeQTE: 0.5
   coolDownQTEText: {fileID: 897829480}
   isOverheated: 0
+  baseCoolRate: 1
+  fastCoolRate: 3
+  slowCoolRate: 0.5
 --- !u!1 &645317765
 GameObject:
   m_ObjectHideFlags: 0
@@ -1231,7 +1234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c019eb54091d94045969fbdf3d9e7e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 346371965}
+  player: {fileID: 346371967}
+  distressSignals: {fileID: 0}
   active_spawners: 3
   enemyPrefab: {fileID: 907049277261265459, guid: 0afd1cd33fdeb2a47bb2f8835171d0ec, type: 3}
 --- !u!4 &1637409639
@@ -1366,6 +1370,7 @@ GameObject:
   - component: {fileID: 1930606027}
   - component: {fileID: 1930606030}
   - component: {fileID: 1930606029}
+  - component: {fileID: 1930606031}
   m_Layer: 0
   m_Name: Flame Hitbox
   m_TagString: Untagged
@@ -1456,6 +1461,22 @@ MonoBehaviour:
   hitboxSize: {x: 3.25, y: 1.91}
   _pointer: {fileID: 949507301}
   overheat: {fileID: 346371971}
+--- !u!114 &1930606031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930606026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cae804921850ee44f8c0e613a70544ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _comboTime: 10
+  _initialThresh: 10
+  _threshRate: 2
+  score: 0
 --- !u!1 &1956951318
 GameObject:
   m_ObjectHideFlags: 0

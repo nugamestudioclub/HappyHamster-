@@ -34,7 +34,7 @@ public class ComboMultiplier : MonoBehaviour
         }
     }
 
-    void killedEnemy()
+    public void killedEnemy()
     {
         _enemiesKilled += 1;
 
