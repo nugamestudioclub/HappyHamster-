@@ -30,11 +30,11 @@ public class ComboMultiplier : MonoBehaviour
 
         if (_onKillingSpree && (_currentTime - _timeSpreeStarted) >= _comboTime && _enemiesKilled < _nextKillThreshhold)
         {
-            startTheCombo();
+            dropTheCombo();
         }
     }
 
-    void killedEnemy()
+    public void killedEnemy()
     {
         _enemiesKilled += 1;
 

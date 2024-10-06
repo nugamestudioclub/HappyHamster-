@@ -18,12 +18,14 @@ public class Flamethrower : MonoBehaviour
     private Transform _pointer;
     [SerializeField]
     Overheatting overheat;
+    private ComboMultiplier cm;
 
     void Start()
     {
         _collider = this.GetComponent<Collider2D>();
         _spriteRenderer = this.GetComponent<SpriteRenderer>();
         _spriteRenderer.enabled = false;
+        cm = this.GetComponent<ComboMultiplier>();
     }
 
     void Update()
@@ -47,6 +49,7 @@ public class Flamethrower : MonoBehaviour
                 if (enemy != null) 
                 {
                     enemy.Kill();
+
                 }
             }
         }
@@ -69,6 +72,7 @@ public class Flamethrower : MonoBehaviour
         if (_firing && collision.gameObject.tag.Equals("Enemy"))
         {
             collision.GetComponent<Enemy>().Kill();
+            cm.killedEnemy();
         }
     }
 
