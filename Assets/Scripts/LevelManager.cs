@@ -31,11 +31,16 @@ public class LevelManager : MonoBehaviour
     private float _elapsedTime = 0f;
 
 
+    private MusicManager musicManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        musicManager = GameObject.Find("MusicSystem").GetComponent<MusicManager>();
+    }
 
+    void StartGame() {
+        musicManager.OnGameStart();
     }
 
     // Update is called once per frame
@@ -82,6 +87,7 @@ public class LevelManager : MonoBehaviour
         timer.gameObject.SetActive(false);
         slider.gameObject.SetActive(false);
         Time.timeScale = 0f;
+        musicManager.OnGameOver();
     }
 
 

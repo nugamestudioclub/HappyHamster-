@@ -56,7 +56,7 @@ public class Overheatting : MonoBehaviour
         }
         else
         {
-            Cooldown();    
+            Cooldown();
         }
 
         if (cooling)
