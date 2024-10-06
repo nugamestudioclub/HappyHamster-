@@ -10,6 +10,8 @@ public class SpawnManager : MonoBehaviour
     public int active_spawners; // How many spawners will be active at once
     public GameObject enemyPrefab;
 
+    private float _timeElapsed = 0f;
+
     void Start()
     {
         // TODO: make the list of children without this array thing
@@ -53,11 +55,12 @@ public class SpawnManager : MonoBehaviour
     void Update()
     {
         if (LevelManager.isGameOver) { return;  }
+        _timeElapsed += Time.deltaTime;
         List<GameObject> furthestN = GetFurthestN(spawners, active_spawners);
 
         if (furthestN != null) {
             foreach (GameObject point in furthestN) {
-                if (Random.Range(0, 100) < 30) {
+                if (Random.Range(0, 100) <= 4 * Mathf.Floor(_timeElapsed / 10)) {
                     SpawnEnemy(point);
                 }
             }
