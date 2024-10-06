@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f95de8c7f2428488a9804485cce498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHamsters: 50000000
+  maxHamsters: 1000
   currentHamsters: 0
   maxGracePeriod: 5
   endScreen: {fileID: 396856306}
@@ -308,6 +308,10 @@ PrefabInstance:
     - target: {fileID: 1917800187162695234, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563418527894414631, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
+      propertyPath: speed
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3326954108161617756, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
       propertyPath: _maxHeat
@@ -518,7 +522,7 @@ GameObject:
   - component: {fileID: 359781899}
   m_Layer: 0
   m_Name: SpawnPointSW
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -728,7 +732,7 @@ GameObject:
   - component: {fileID: 463014658}
   m_Layer: 0
   m_Name: SpawnPointS
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -918,7 +922,7 @@ GameObject:
   - component: {fileID: 945460573}
   m_Layer: 0
   m_Name: SpawnPointE
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1396,7 +1400,7 @@ GameObject:
   - component: {fileID: 1201938580}
   m_Layer: 0
   m_Name: SpawnPointN
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1897,7 +1901,7 @@ GameObject:
   - component: {fileID: 1528023653}
   m_Layer: 0
   m_Name: SpawnPointNE
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1928,7 +1932,7 @@ GameObject:
   - component: {fileID: 1535586861}
   m_Layer: 0
   m_Name: SpawnPointNW
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1959,7 +1963,7 @@ GameObject:
   - component: {fileID: 1578926708}
   m_Layer: 0
   m_Name: SpawnPointW
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2526,7 +2530,7 @@ GameObject:
   - component: {fileID: 2037216308}
   m_Layer: 0
   m_Name: SpawnPointSE
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2578,7 +2582,7 @@ MonoBehaviour:
   player: {fileID: 326137010}
   distressSignals: {fileID: 473930929}
   active_spawners: 3
-  enemyPrefab: {fileID: 907049277261265459, guid: 0afd1cd33fdeb2a47bb2f8835171d0ec, type: 3}
+  enemyPrefab: {fileID: 1120313263658222267, guid: a7487f9b4ce20a44b9ac8054afd223a6, type: 3}
 --- !u!4 &2133166496
 Transform:
   m_ObjectHideFlags: 0

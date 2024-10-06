@@ -111,7 +111,7 @@ public class Enemy : MonoBehaviour
         //    _state = EnemyState.Run;
         } else {
             GameObject[] _spawners = GameObject.FindGameObjectsWithTag("SpawnPoint");
-           
+
             GameObject spawner = SortObjectsByDistance2(_spawners.ToList())[0];
             
             Vector3 deltaSpawnerSignal = (spawner.transform.position - distressSignal.transform.position);

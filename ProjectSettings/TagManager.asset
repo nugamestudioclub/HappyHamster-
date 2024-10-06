@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - DistressSignal
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
