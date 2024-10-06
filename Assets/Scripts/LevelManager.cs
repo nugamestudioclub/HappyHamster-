@@ -34,10 +34,13 @@ public class LevelManager : MonoBehaviour
 
     private MusicManager musicManager;
 
+    private Flamethrower flamethrower;
+
     // Start is called before the first frame update
     void Start()
     {
         musicManager = GameObject.Find("MusicSystem").GetComponent<MusicManager>();
+        flamethrower = GameObject.Find("Flame Hitbox").GetComponent<Flamethrower>();
     }
 
     void StartGame() {
@@ -100,6 +103,7 @@ public class LevelManager : MonoBehaviour
         slider.gameObject.SetActive(false);
         Time.timeScale = 0f;
         musicManager.OnGameOver();
+        flamethrower.OnGameOver();
     }
 
 

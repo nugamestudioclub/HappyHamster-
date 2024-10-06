@@ -74,6 +74,11 @@ public class Flamethrower : MonoBehaviour
         instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
+    public void OnGameOver()
+    {
+        instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+    }
+
 
     void OnTriggerEnter2D(Collider2D collision)
     {

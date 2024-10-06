@@ -241,6 +241,7 @@ MonoBehaviour:
   sliderFill: {fileID: 2116385424}
   timer: {fileID: 1292490273}
   enemiesOnScreen: {fileID: 1607652445}
+  flamethrower: {fileID: 0}
 --- !u!4 &195679255
 Transform:
   m_ObjectHideFlags: 0
