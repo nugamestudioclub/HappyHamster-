@@ -139,3 +139,10 @@ MonoBehaviour:
   enemyBody: {fileID: 0}
   spriteRenderer: {fileID: 5550729297378735564}
   maxVelocity: 0.2
+  hamsterDieEvent:
+    Guid:
+      Data1: -286054790
+      Data2: 1315708904
+      Data3: 536028059
+      Data4: 1850160847
+    Path: event:/Hamster Death

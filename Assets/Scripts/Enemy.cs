@@ -29,6 +29,9 @@ public class Enemy : MonoBehaviour
     public float maxVelocity = 0.2f; // in units per second
     private EnemyState _state = EnemyState.Roam;
 
+    private FMOD.Studio.EventInstance hamsterDieInstance;
+    public FMODUnity.EventReference hamsterDieEvent;
+
     void SetRandomTarget() {
         _target = new Vector2(Random.Range(-MAP_SIZE, MAP_SIZE), Random.Range(-MAP_SIZE, MAP_SIZE));
     }
@@ -38,6 +41,8 @@ public class Enemy : MonoBehaviour
     {
         enemyCount += 1;
         SetRandomTarget();
+
+        hamsterDieInstance = FMODUnity.RuntimeManager.CreateInstance(hamsterDieEvent);
     }
 
     void Push(Vector2 direction) {
@@ -211,13 +216,9 @@ public class Enemy : MonoBehaviour
             GameObject signal = Instantiate(enemyKilledSignalPrefab, transform.position, Quaternion.identity);
             signal.transform.parent = distressSignals.transform;
         }
-        Destroy(gameObject);
-    }
-
-
-
-    private void OnDestroy()
-    {
+        hamsterDieInstance.start();
+        gameObject.SetActive(false);
         enemyCount--;
+        Destroy(gameObject, 1f);
     }
 }
