@@ -29,6 +29,7 @@ public class LevelManager : MonoBehaviour
     public static bool isGameOver = false;
 
     private float _elapsedTime = 0f;
+    private bool _doRestartGame = false;
 
 
     private MusicManager musicManager;
@@ -41,11 +42,22 @@ public class LevelManager : MonoBehaviour
 
     void StartGame() {
         musicManager.OnGameStart();
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (_doRestartGame) {
+            currentHamsters = 0;
+            isGameOver = false;
+            _doRestartGame = false;
+            Enemy.enemyCount = 0;
+            _elapsedTime = 0f;
+            SceneManager.LoadScene("spawner_test");
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("spawner_test"));
+            return;
+        }
         currentHamsters = Enemy.enemyCount;
         if (curTime <= 0)
         {
@@ -91,10 +103,10 @@ public class LevelManager : MonoBehaviour
     }
 
 
-    public void onFinishClick()
+    public void OnFinishClick()
     {
-        Debug.Log("here!");
-        Time.timeScale = 1;
-        SceneManager.LoadScene("start");
+        Debug.Log("Finish Clicked");
+        Time.timeScale = 1f;
+        _doRestartGame = true;
     }
 }
