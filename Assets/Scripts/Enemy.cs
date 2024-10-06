@@ -49,7 +49,8 @@ public class Enemy : MonoBehaviour
         // }
         
         //move the enemy without force
-        transform.position += new Vector3(direction.x, direction.y, 0) * maxVelocity;
+        transform.position += new Vector3(direction.x, direction.y, 0) * maxVelocity * Time.fixedDeltaTime * 65f;
+        // enemyBody.velocity = new Vector2(direction.x, direction.y) * maxVelocity * 80f;
 
         //if (enemyBody.velocity.magnitude < maxVelocity) {
         //    enemyBody.AddForce(new Vector3(direction.x, direction.y, 0) * acceleration);
@@ -144,7 +145,7 @@ public class Enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
         if (player == null || distressSignals == null) {
