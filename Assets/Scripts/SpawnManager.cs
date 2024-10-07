@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    [Range(1, 100)] [Tooltip("1 is the hardest difficulty, 100 is the easiest")]
+    [SerializeField] private int _difficulty;
+    
     public Transform player; // Player object
     public GameObject distressSignals; // Player object
     List<GameObject> spawners; // List of spawners
@@ -96,7 +99,7 @@ public class SpawnManager : MonoBehaviour
 
         if (furthestN != null) {
             foreach (GameObject point in furthestN) {
-                if (Random.Range(0, 100) <= 4 * Mathf.Floor(_timeElapsed / 10)) {
+                if (Random.Range(0, 100) <= 4 * Mathf.Floor(_timeElapsed / _difficulty)) {
                     SpawnEnemy(point);
                 }
             }
