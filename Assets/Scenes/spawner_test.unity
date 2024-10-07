@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f95de8c7f2428488a9804485cce498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHamsters: 250
+  maxHamsters: 2000
   currentHamsters: 0
   maxGracePeriod: 5
   endScreen: {fileID: 2043801515}
