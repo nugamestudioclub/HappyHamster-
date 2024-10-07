@@ -1072,6 +1072,82 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5647299022218641491, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_fontSize
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647299022218641491, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_colorMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647299022218641491, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b02050e0cb5f2345ae28278acff4a7f, type: 2}
+    - target: {fileID: 5647299022218641491, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647299022218641491, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 4296367561156801736, guid: 7b02050e0cb5f2345ae28278acff4a7f, type: 2}
+    - target: {fileID: 5647299022218641491, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647299022218641491, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_enableVertexGradient
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647299022218641491, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_fontColorGradient.topLeft.b
+      value: 0.035037242
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647299022218641491, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_fontColorGradient.topLeft.g
+      value: 0.77039456
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647299022218641491, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_fontColorGradient.topLeft.r
+      value: 0.97735846
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647299022218641491, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_fontColorGradient.topRight.b
+      value: 0.035037242
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647299022218641491, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_fontColorGradient.topRight.g
+      value: 0.77039456
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647299022218641491, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_fontColorGradient.topRight.r
+      value: 0.97735846
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647299022218641491, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_fontColorGradient.bottomLeft.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647299022218641491, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_fontColorGradient.bottomLeft.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647299022218641491, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_fontColorGradient.bottomLeft.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647299022218641491, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_fontColorGradient.bottomRight.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647299022218641491, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_fontColorGradient.bottomRight.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647299022218641491, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_fontColorGradient.bottomRight.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6097382063276894541, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
