@@ -6,13 +6,268 @@
 [LOG] OutputCoreAudio::init                    : Maximum hardware read size: 512 samples, Software buffer size: 512 samples, Number of software buffers: 4.
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: Yes, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 0x7f7cda4fa208 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0x7f7ce9b59408 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] PlaybackSystem::init                     : done
 [LOG] Thread::initThread                       : Init FMOD Studio bank load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] Manager::init                            : done.
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 261600
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 7104
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0x70000b9a693c
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 0x1c291a204
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 0x1c291a2c2
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 0x1c291a2f5
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 0x1c291a394
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0x7f7cba98ba68
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='hampsterdeath8', format=5, channels=2, frequency=48000, lengthbytes=7008, lengthpcm=35875, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.174252.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 261600
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 7104
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0x70000b9a693c
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 0x1c291a204
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 0x1c291a2c2
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 0x1c291a2f5
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 0x1c291a394
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0x7f7cba98ba68
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='hampsterdeath7', format=5, channels=2, frequency=48000, lengthbytes=12192, lengthpcm=61217, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.175529.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 261600
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 7104
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0x70000b9a693c
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 0x1c291a204
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 0x1c291a2c2
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 0x1c291a2f5
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 0x1c291a394
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0x7f7cba98ba68
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='hampsterdeath3', format=5, channels=2, frequency=48000, lengthbytes=8224, lengthpcm=39000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.294689.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 261600
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 7104
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0x70000b9a693c
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 0x1c291a204
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 0x1c291a2c2
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 0x1c291a2f5
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 0x1c291a394
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0x7f7cba98ba68
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='hampsterdeath6', format=5, channels=2, frequency=48000, lengthbytes=3040, lengthpcm=15050, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.385968.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 261600
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 7104
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0x70000b9a693c
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 0x1c291a204
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 0x1c291a2c2
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 0x1c291a2f5
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 0x1c291a394
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0x7f7cba98ba68
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='hampsterdeath2', format=5, channels=2, frequency=48000, lengthbytes=7296, lengthpcm=36000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.224704.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 261600
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 7104
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0x70000b9a693c
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 0x1c291a204
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 0x1c291a2c2
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 0x1c291a2f5
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 0x1c291a394
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0x7f7cba98ba68
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='hampsterdeath5', format=5, channels=2, frequency=48000, lengthbytes=6624, lengthpcm=38046, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.185494.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 261600
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 7104
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0x70000b9a693c
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 0x1c291a204
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 0x1c291a2c2
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 0x1c291a2f5
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 0x1c291a394
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0x7f7cba98ba68
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='hampsterdeath1', format=5, channels=2, frequency=48000, lengthbytes=4032, lengthpcm=21300, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.175623.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 261600
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 7104
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0x70000b9a693c
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 0x1c291a204
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 0x1c291a2c2
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 0x1c291a2f5
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 0x1c291a394
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0x7f7cba98ba68
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='hampsterdeath9', format=5, channels=2, frequency=48000, lengthbytes=5856, lengthpcm=30346, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.251884.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 261600
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 7104
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0x70000b9a693c
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 0x1c291a204
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 0x1c291a2c2
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 0x1c291a2f5
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 0x1c291a394
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0x7f7cba98ba68
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='hampsterdeath4', format=5, channels=2, frequency=48000, lengthbytes=4064, lengthpcm=18275, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.260014.
+[LOG] SystemI::createSound                     : filename = Assets/Audio/gameplay-music/Build/Desktop/Music.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0x7f7cd87edb98, queue head = 0x7f7cddbdb208, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0x7f7cd87edb98
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/Audio/gameplay-music/Build/Desktop/Music.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3430272
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 89664
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0x7f7cd87a8590
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 20914
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Rock Layer - Final Mix', format=5, channels=2, frequency=48000, lengthbytes=1599648, lengthpcm=5825828, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.521922.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0x7f7cd87edb98
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0x7f7cdddab978, queue head = 0x7f7cddbdb208, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0x7f7cdddab978
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0x7f7cdddecf88, queue head = 0x7f7cddbdb208, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0x7f7cdddab978
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0x7f7cdddecf88
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0x7f7cdddecf88
+[LOG] SoundI::release                          : Rock Layer - Final Mix (0x7f7cddbdadd8)
+[LOG] SoundI::release                          :     Rock Layer - Final Mix (0x7f7cdddf1978)
+[LOG] SoundI::release                          :     Rock Layer - Final Mix (0x7f7cdddab978)
+[LOG] SoundI::release                          :  (0x7f7cddbe9678)
+[LOG] SoundI::release                          :     deargod (0x7f7cddbe97e8)
+[LOG] SoundI::release                          :  (0x7f7cddbdf938)
+[LOG] SoundI::release                          :     multikill (0x7f7cddbdfaa8)
+[LOG] SoundI::release                          :  (0x7f7cddbe4888)
+[LOG] SoundI::release                          :     bloodbath (0x7f7cddbe49f8)
+[LOG] SoundI::release                          :  (0x7f7cddbdf368)
+[LOG] SoundI::release                          :     leavethemalone (0x7f7cddbdf4d8)
+[LOG] SoundI::release                          :  (0x7f7cddbe1d68)
+[LOG] SoundI::release                          :     mywifeisgone (0x7f7cddbe1ed8)
+[LOG] SoundI::release                          :  (0x7f7cddbeb5b8)
+[LOG] SoundI::release                          :     nostop (0x7f7cddbeb728)
+[LOG] SoundI::release                          :  (0x7f7cddbdc758)
+[LOG] SoundI::release                          :     pleasehelpme (0x7f7cddbdb3d8)
+[LOG] SoundI::release                          :  (0x7f7cddbe4e58)
+[LOG] SoundI::release                          :     stoprightnow (0x7f7cddbe4fc8)
+[LOG] SoundI::release                          :  (0x7f7cddbeaf58)
+[LOG] SoundI::release                          :     thehorror (0x7f7cddbea4f8)
+[LOG] SoundI::release                          :  (0x7f7cddbe8368)
+[LOG] SoundI::release                          :     whereisyourmercy (0x7f7cddbe84d8)
+[LOG] SoundI::release                          :  (0x7f7cddbeca28)
+[LOG] SoundI::release                          :     whyareyoudoingthis (0x7f7cddbecb98)
+[LOG] SoundI::release                          :  (0x7f7cddbe08c8)
+[LOG] SoundI::release                          :     youreamonster (0x7f7cddbe0a38)
+[LOG] SoundI::release                          :  (0x7f7cddbe25d8)
+[LOG] SoundI::release                          :     massacre (0x7f7cddbe1908)
+[LOG] SoundI::release                          :  (0x7f7cddbf1d28)
+[LOG] SoundI::release                          :     Base Layer - Final Mix (0x7f7cddbf1e98)
+[LOG] SoundI::release                          : Rock Layer - Final Mix (0x7f7cd87edb98)
+[LOG] SoundI::release                          :     Rock Layer - Final Mix (0x7f7cddde8a98)
+[LOG] SoundI::release                          :     Rock Layer - Final Mix (0x7f7cdddecf88)
+[LOG] SoundI::release                          :  (0x7f7cddbf5f48)
+[LOG] SoundI::release                          :     qte_success (0x7f7cddbf45d8)
+[LOG] SoundI::release                          :  (0x7f7cddbf9878)
+[LOG] SoundI::release                          :     flamethrower_alarm (0x7f7cddbf5ae8)
+[LOG] SoundI::release                          :  (0x7f7cddbf4a38)
+[LOG] SoundI::release                          :     flamethrower (0x7f7cddbf3418)
+[LOG] SoundI::release                          :  (0x7f7cd9529bd8)
+[LOG] SoundI::release                          :     hampsterdeath1 (0x7f7cd95225e8)
+[LOG] SoundI::release                          :  (0x7f7cddaa9bb8)
+[LOG] SoundI::release                          :     hampsterdeath2 (0x7f7cd9563878)
+[LOG] SoundI::release                          :  (0x7f7cd95255f8)
+[LOG] SoundI::release                          :     hampsterdeath3 (0x7f7cd95a8528)
+[LOG] SoundI::release                          :  (0x7f7cd9537cd8)
+[LOG] SoundI::release                          :     hampsterdeath4 (0x7f7cd95323e8)
+[LOG] SoundI::release                          :  (0x7f7cddab91e8)
+[LOG] SoundI::release                          :     hampsterdeath5 (0x7f7cd95461b8)
+[LOG] SoundI::release                          :  (0x7f7cddadc618)
+[LOG] SoundI::release                          :     hampsterdeath6 (0x7f7cd95c8158)
+[LOG] SoundI::release                          :  (0x7f7cd952c458)
+[LOG] SoundI::release                          :     hampsterdeath7 (0x7f7cd9596ee8)
+[LOG] SoundI::release                          :  (0x7f7cd9599048)
+[LOG] SoundI::release                          :     hampsterdeath8 (0x7f7cd953d398)
+[LOG] SoundI::release                          :  (0x7f7cd9563a28)
+[LOG] SoundI::release                          :     hampsterdeath9 (0x7f7cd9597598)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::close                           : Closed.
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)

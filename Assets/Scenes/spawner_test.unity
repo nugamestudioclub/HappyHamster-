@@ -1599,8 +1599,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _comboTime: 10
   _initialThresh: 10
-  _threshRate: 2
+  _threshRate: 5
   score: 0
+  announceEvent:
+    Guid:
+      Data1: -1003718970
+      Data2: 1083106816
+      Data3: -1164111719
+      Data4: 1581178870
+    Path: event:/Combo Announcer
 --- !u!1 &1963987701 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1971948307984794161, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
@@ -1820,7 +1827,7 @@ MonoBehaviour:
   player: {fileID: 326137010}
   distressSignals: {fileID: 473930929}
   active_spawners: 3
-  enemyPrefab: {fileID: 907049277261265459, guid: 0afd1cd33fdeb2a47bb2f8835171d0ec, type: 3}
+  enemyPrefab: {fileID: 907049277261265459, guid: e2c935c63a9c2c74f8b6a2131a4dc38f, type: 3}
 --- !u!4 &2133166496
 Transform:
   m_ObjectHideFlags: 0
