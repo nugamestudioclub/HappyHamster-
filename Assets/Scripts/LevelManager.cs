@@ -117,5 +117,6 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Finish Clicked");
         Time.timeScale = 1f;
         _doRestartGame = true;
+        musicManager.OnGameStart();
     }
 }
