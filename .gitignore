@@ -80,3 +80,9 @@ crashlytics-build.properties
 
 # Mac
 .DS_Store
+
+# FMod Specific
+[Ff]mod.cache/
+[Ff]mod.cache.meta
+FMODStudioCache.asset
+FMODStudioCache.asset.meta

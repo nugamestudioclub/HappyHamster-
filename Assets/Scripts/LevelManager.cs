@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -24,6 +23,10 @@ public class LevelManager : MonoBehaviour
     private Image sliderFill;
     [SerializeField]
     private TMP_Text timer;
+    [SerializeField]
+    private TMP_Text finalScoreText;
+    [SerializeField]
+    public ComboMultiplier comboMultiplier;
     [SerializeField]
     private Slider enemiesOnScreen;
     public static bool isGameOver = false;
@@ -101,6 +104,7 @@ public class LevelManager : MonoBehaviour
         endScreen.SetActive(true);
         timer.gameObject.SetActive(false);
         slider.gameObject.SetActive(false);
+        finalScoreText.text = "Final Score: " + comboMultiplier.score;
         Time.timeScale = 0f;
         musicManager.OnGameOver();
         flamethrower.OnGameOver();

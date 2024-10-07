@@ -64,6 +64,24 @@ public class ComboMultiplier : MonoBehaviour
         _scoreMult++;
         _nextKillThreshhold *= _threshRate;
         _timeSpreeStarted = _currentTime;
+
+        //hi skylar, this is where the audio goes
+        if (_scoreMult == 2.0f)
+        {
+
+        } else if (_scoreMult == 3.0f)
+        { 
+            
+        } else if (_scoreMult == 4.0f)
+        {
+
+        } else if ( _scoreMult == 5.0f) 
+        { 
+            
+        } else
+        {
+
+        }
     }
 
     void dropTheCombo()
