@@ -68,10 +68,10 @@ MonoBehaviour:
   Path: Assets/Audio/gameplay-music/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638638409972405128
+  lastModified: 638638484735736588
   FileSizes:
   - Name: Desktop
-    Value: 1174
+    Value: 1286
   Exists: 1
 --- !u!114 &-3925906881906050525
 MonoBehaviour:
@@ -88,7 +88,7 @@ MonoBehaviour:
   Name: Combo Picker
   StudioPath: 
   Min: 1
-  Max: 4
+  Max: 5
   Default: 1
   ID:
     data1: 2969475302
@@ -112,10 +112,10 @@ MonoBehaviour:
   Path: Assets/Audio/gameplay-music/Build/Desktop/VO.bank
   Name: VO
   StudioPath: bank:/VO
-  lastModified: 638638409972432173
+  lastModified: 638638484737635045
   FileSizes:
   - Name: Desktop
-    Value: 83680
+    Value: 259520
   Exists: 1
 --- !u!114 &-2720502341365871650
 MonoBehaviour:
@@ -132,10 +132,10 @@ MonoBehaviour:
   Path: Assets/Audio/gameplay-music/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638638409972422416
+  lastModified: 638638484736673309
   FileSizes:
   - Name: Desktop
-    Value: 241664
+    Value: 268704
   Exists: 1
 --- !u!114 &-2535158090250867998
 MonoBehaviour:
@@ -165,6 +165,84 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3122
+--- !u!114 &-2413537351135148333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/QTE Success
+  m_EditorClassIdentifier: 
+  Path: event:/QTE Success
+  Guid:
+    Data1: 1214198949
+    Data2: 1105256780
+    Data3: -1810769744
+    Data4: 350826011
+  Banks:
+  - {fileID: -2720502341365871650}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1089
+--- !u!114 &-1933497457237502853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Flamethrower/Flamethrower Alarm
+  m_EditorClassIdentifier: 
+  Path: event:/Flamethrower/Flamethrower Alarm
+  Guid:
+    Data1: 1209926321
+    Data2: 1174320268
+    Data3: 793370799
+    Data4: 1148659446
+  Banks:
+  - {fileID: -2720502341365871650}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
+--- !u!114 &-799953874595174281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Gameplay/Intensity
+  m_EditorClassIdentifier: 
+  Name: Intensity
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1489057117
+    data2: 3946587227
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,17 +262,43 @@ MonoBehaviour:
   - {fileID: -2720502341365871650}
   - {fileID: -3564707481313850121}
   EditorEvents:
-  - {fileID: -8066981487304406898}
-  - {fileID: 8094120930768160875}
   - {fileID: 4386435990030151435}
   - {fileID: -2535158090250867998}
+  - {fileID: 5782342606971559424}
+  - {fileID: 7199070028979341437}
+  - {fileID: -1933497457237502853}
+  - {fileID: -2413537351135148333}
   EditorParameters: []
   MasterBanks:
   - {fileID: 2848494060767328013}
   StringsBanks:
   - {fileID: -6144036716714075125}
-  cacheTime: 638638409972432173
+  cacheTime: 638638484737635045
   cacheVersion: 131620
+--- !u!114 &1369631821840791723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Gameplay/Low Pass
+  m_EditorClassIdentifier: 
+  Name: Low Pass
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1202793489
+    data2: 1776278794
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &2848494060767328013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +314,7 @@ MonoBehaviour:
   Path: Assets/Audio/gameplay-music/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638638408122061971
+  lastModified: 638638484735723120
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -281,12 +385,12 @@ MonoBehaviour:
   Path: Assets/Audio/gameplay-music/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638638408122623445
+  lastModified: 638638484736441920
   FileSizes:
   - Name: Desktop
     Value: 3519936
   Exists: 1
---- !u!114 &8094120930768160875
+--- !u!114 &5782342606971559424
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -296,9 +400,38 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Flamethrower
+  m_Name: event:/Gameplay
   m_EditorClassIdentifier: 
-  Path: event:/Flamethrower
+  Path: event:/Gameplay
+  Guid:
+    Data1: -539901094
+    Data2: 1197552845
+    Data3: -678439776
+    Data4: 991705656
+  Banks:
+  - {fileID: 4768172880293253266}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 1369631821840791723}
+  - {fileID: -799953874595174281}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 253714
+--- !u!114 &7199070028979341437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Flamethrower/Flamethrower Shooting
+  m_EditorClassIdentifier: 
+  Path: event:/Flamethrower/Flamethrower Shooting
   Guid:
     Data1: -1569481188
     Data2: 1266535437

@@ -241,7 +241,6 @@ MonoBehaviour:
   sliderFill: {fileID: 2116385424}
   timer: {fileID: 1292490273}
   enemiesOnScreen: {fileID: 1607652445}
-  flamethrower: {fileID: 0}
 --- !u!4 &195679255
 Transform:
   m_ObjectHideFlags: 0
@@ -398,6 +397,46 @@ PrefabInstance:
       propertyPath: coolDownQTEImage
       value: 
       objectReference: {fileID: 183907365}
+    - target: {fileID: 2831268560094407197, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
+      propertyPath: qteSuccessEvent.Path
+      value: event:/QTE Success
+      objectReference: {fileID: 0}
+    - target: {fileID: 2831268560094407197, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
+      propertyPath: qteSuccessEvent.Guid.Data1
+      value: 1214198949
+      objectReference: {fileID: 0}
+    - target: {fileID: 2831268560094407197, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
+      propertyPath: qteSuccessEvent.Guid.Data2
+      value: 1105256780
+      objectReference: {fileID: 0}
+    - target: {fileID: 2831268560094407197, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
+      propertyPath: qteSuccessEvent.Guid.Data3
+      value: -1810769744
+      objectReference: {fileID: 0}
+    - target: {fileID: 2831268560094407197, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
+      propertyPath: qteSuccessEvent.Guid.Data4
+      value: 350826011
+      objectReference: {fileID: 0}
+    - target: {fileID: 2831268560094407197, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
+      propertyPath: flamethrowerAlarmEvent.Path
+      value: event:/Flamethrower/Flamethrower Alarm
+      objectReference: {fileID: 0}
+    - target: {fileID: 2831268560094407197, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
+      propertyPath: flamethrowerAlarmEvent.Guid.Data1
+      value: 1209926321
+      objectReference: {fileID: 0}
+    - target: {fileID: 2831268560094407197, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
+      propertyPath: flamethrowerAlarmEvent.Guid.Data2
+      value: 1174320268
+      objectReference: {fileID: 0}
+    - target: {fileID: 2831268560094407197, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
+      propertyPath: flamethrowerAlarmEvent.Guid.Data3
+      value: 793370799
+      objectReference: {fileID: 0}
+    - target: {fileID: 2831268560094407197, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
+      propertyPath: flamethrowerAlarmEvent.Guid.Data4
+      value: 1148659446
+      objectReference: {fileID: 0}
     - target: {fileID: 3326954108161617756, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
       propertyPath: _maxHeat
       value: 10
