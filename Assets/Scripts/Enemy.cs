@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
 
     const int MAP_SIZE = 57/2;
     const int PLAYER_SAFE_DISTANCE = 10;
-    public float maxVelocity = 0.2f; // in units per second
+    public float maxVelocity = 2f; // in units per second
     private EnemyState _state = EnemyState.Roam;
 
     private FMOD.Studio.EventInstance hamsterDieInstance;
@@ -40,6 +40,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         enemyCount += 1;
+        enemyBody = gameObject.GetComponent<Rigidbody2D>();
         SetRandomTarget();
 
         hamsterDieInstance = FMODUnity.RuntimeManager.CreateInstance(hamsterDieEvent);
@@ -54,8 +55,8 @@ public class Enemy : MonoBehaviour
         // }
         
         //move the enemy without force
-        transform.position += new Vector3(direction.x, direction.y, 0) * maxVelocity * Time.fixedDeltaTime * 65f;
-        // enemyBody.velocity = new Vector2(direction.x, direction.y) * maxVelocity * 80f;
+        //transform.position += new Vector3(direction.x, direction.y, 0) * (maxVelocity * 3 * Time.fixedDeltaTime);
+        enemyBody.velocity = new Vector3(direction.x, direction.y, 0) * (maxVelocity * 3);
 
         //if (enemyBody.velocity.magnitude < maxVelocity) {
         //    enemyBody.AddForce(new Vector3(direction.x, direction.y, 0) * acceleration);
@@ -145,12 +146,12 @@ public class Enemy : MonoBehaviour
 
             //_run_to =  deltaSpawnerSignal; // (((transform.position - distressSignal.transform.position) * 1/(distressSignal.transform.position - transform.position).magnitude * 50f) + (spawner.transform.position - transform.position))/2;
             _state = EnemyState.Run;
-            maxVelocity = 0.2f;
+            maxVelocity = 6f;
         }
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
 
         if (player == null || distressSignals == null) {
@@ -170,7 +171,7 @@ public class Enemy : MonoBehaviour
                 break;
             case EnemyState.Roam:
                 // Move towards random point
-                maxVelocity = 0.1f;
+                maxVelocity = 3f;
                 if (direction.magnitude < PLAYER_SAFE_DISTANCE) {
                     _state = EnemyState.HugPlayer;
                     direction.Normalize();
@@ -185,7 +186,7 @@ public class Enemy : MonoBehaviour
                 if (Random.Range(0, 100000) < 10) _state = EnemyState.Idle;
                 break;
             case EnemyState.HugPlayer:
-                maxVelocity = 0.05f;
+                maxVelocity = 1.5f;
                 direction.Normalize();
                 break;    
             default:

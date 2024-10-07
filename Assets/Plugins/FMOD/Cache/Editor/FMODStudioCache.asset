@@ -68,7 +68,7 @@ MonoBehaviour:
   Path: Assets/Audio/gameplay-music/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638638409972405128
+  lastModified: 638638436312713068
   FileSizes:
   - Name: Desktop
     Value: 1174
@@ -88,7 +88,7 @@ MonoBehaviour:
   Name: Combo Picker
   StudioPath: 
   Min: 1
-  Max: 4
+  Max: 5
   Default: 1
   ID:
     data1: 2969475302
@@ -112,10 +112,10 @@ MonoBehaviour:
   Path: Assets/Audio/gameplay-music/Build/Desktop/VO.bank
   Name: VO
   StudioPath: bank:/VO
-  lastModified: 638638409972432173
+  lastModified: 638638436313772914
   FileSizes:
   - Name: Desktop
-    Value: 83680
+    Value: 259520
   Exists: 1
 --- !u!114 &-2720502341365871650
 MonoBehaviour:
@@ -132,7 +132,7 @@ MonoBehaviour:
   Path: Assets/Audio/gameplay-music/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638638409972422416
+  lastModified: 638638436313566934
   FileSizes:
   - Name: Desktop
     Value: 241664
@@ -164,7 +164,7 @@ MonoBehaviour:
   - {fileID: -3925906881906050525}
   MinDistance: 1
   MaxDistance: 20
-  Length: 3122
+  Length: 3000
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
   - {fileID: 2848494060767328013}
   StringsBanks:
   - {fileID: -6144036716714075125}
-  cacheTime: 638638409972432173
+  cacheTime: 638638436313772914
   cacheVersion: 131620
 --- !u!114 &2848494060767328013
 MonoBehaviour:
@@ -210,7 +210,7 @@ MonoBehaviour:
   Path: Assets/Audio/gameplay-music/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638638408122061971
+  lastModified: 638638436312696442
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -281,7 +281,7 @@ MonoBehaviour:
   Path: Assets/Audio/gameplay-music/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638638408122623445
+  lastModified: 638638436313355618
   FileSizes:
   - Name: Desktop
     Value: 3519936
