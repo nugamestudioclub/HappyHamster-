@@ -19,6 +19,8 @@ public class Flamethrower : MonoBehaviour
     [SerializeField]
     Overheatting overheat;
     private ComboMultiplier cm;
+    [SerializeField]
+    private GameObject _visualFlame;
 
     //skylar, adding flamethrower sounds
     private FMOD.Studio.EventInstance instance;
@@ -29,6 +31,7 @@ public class Flamethrower : MonoBehaviour
         _collider = this.GetComponent<Collider2D>();
         _spriteRenderer = this.GetComponent<SpriteRenderer>();
         _spriteRenderer.enabled = false;
+        _visualFlame.SetActive(false);
         cm = this.GetComponent<ComboMultiplier>();
 
         instance = FMODUnity.RuntimeManager.CreateInstance(flamethrowerFiringEvent);
@@ -64,6 +67,7 @@ public class Flamethrower : MonoBehaviour
     {
         _firing = true;
         _spriteRenderer.enabled = true;
+        _visualFlame.SetActive(true);
         instance.start();
     }
 
@@ -71,6 +75,7 @@ public class Flamethrower : MonoBehaviour
     {
         _firing = false;
         _spriteRenderer.enabled = false;
+        _visualFlame.SetActive(false);
         instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
