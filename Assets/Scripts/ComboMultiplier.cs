@@ -25,6 +25,15 @@ public class ComboMultiplier : MonoBehaviour
     private float _timeSpreeStarted;
     private float _currentTime = 0.0f;
 
+    private FMOD.Studio.EventInstance announceInstance;
+    public FMODUnity.EventReference announceEvent;
+
+    void Start() {
+
+        announceInstance = FMODUnity.RuntimeManager.CreateInstance(announceEvent);
+        announceInstance.setParameterByName("Combo Picker", 1);
+    }
+
     void Update()
     {
         _currentTime += Time.deltaTime;
@@ -63,26 +72,28 @@ public class ComboMultiplier : MonoBehaviour
     void increaseTheCombo()
     {
         _scoreMult++;
+        Debug.Log("among us");
         _nextKillThreshhold *= _threshRate;
         _timeSpreeStarted = _currentTime;
 
         //hi skylar, this is where the audio goes
         if (_scoreMult == 2.0f)
         {
-
+            announceInstance.setParameterByName("Combo Picker", 1);
         } else if (_scoreMult == 3.0f)
         { 
-            
+            announceInstance.setParameterByName("Combo Picker", 2);
         } else if (_scoreMult == 4.0f)
         {
-
+            announceInstance.setParameterByName("Combo Picker", 3);
         } else if ( _scoreMult == 5.0f) 
         { 
-            
+            announceInstance.setParameterByName("Combo Picker", 4);
         } else
         {
-
+            announceInstance.setParameterByName("Combo Picker", 5);
         }
+        announceInstance.start();
     }
 
     void dropTheCombo()
