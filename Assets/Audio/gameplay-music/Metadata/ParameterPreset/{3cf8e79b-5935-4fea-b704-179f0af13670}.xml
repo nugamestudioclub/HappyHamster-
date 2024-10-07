@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{3cf8e79b-5935-4fea-b704-179f0af13670}">
+		<property name="name">
+			<value>Combo Picker</value>
+		</property>
+		<relationship name="folder">
+			<destination>{a5ad7254-4123-4f4c-9052-76c345d0b66e}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{1454c538-b0cc-46ef-bafd-4e3560a3b29f}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{1454c538-b0cc-46ef-bafd-4e3560a3b29f}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="minimum">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>5</value>
+		</property>
+		<property name="initialValue">
+			<value>1</value>
+		</property>
+	</object>
+</objects>

@@ -8,9 +8,9 @@ public class Overheatting : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
-    private Slider slider;
+    private RectTransform dial;
     [SerializeField]
-    private Image overheatSlider;
+    private Image dialFace;
     [SerializeField]
     private Color heatUpColor;
     [SerializeField]
@@ -20,7 +20,7 @@ public class Overheatting : MonoBehaviour
     [SerializeField]
     private float cooldownTimeQTE = .5f;
     [SerializeField]
-    private TMP_Text coolDownQTEText;
+    private GameObject coolDownQTEImage;
     private float maxCooldown = 5f;
     private float curCooldown = 0;
     private float curHeat = 0f;
@@ -42,6 +42,10 @@ public class Overheatting : MonoBehaviour
         
     }
 
+    void RotateDial(float percentFull) {
+        dial.rotation = Quaternion.Euler(0, 0, 260f * (1f-percentFull) - 130f);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -52,7 +56,7 @@ public class Overheatting : MonoBehaviour
         }
         else
         {
-            Cooldown();    
+            Cooldown();
         }
 
         if (cooling)
@@ -63,13 +67,14 @@ public class Overheatting : MonoBehaviour
                 isOverheated = false;
                 cooling = false;
             }
-            slider.value = curCooldown / maxCooldown;
+            RotateDial(curCooldown / maxCooldown);
+            dialFace.color = Color.Lerp(cooldownColor, Color.white, curCooldown / maxCooldown);
         }
 
     }
 
     public void Cooldown() {
-        overheatSlider.color = cooldownColor;
+        dialFace.color = cooldownColor;
         float cooldownDif = maxCooldown - curCooldown;
 
         if (!cooling)
@@ -96,12 +101,11 @@ public class Overheatting : MonoBehaviour
 
         if (cooldownRate != slowCoolRate) 
         {
-            coolDownQTEText.gameObject.SetActive(inQTETime);
+            coolDownQTEImage.SetActive(inQTETime);
         }
     }
 
     private void Firing() {
-        overheatSlider.color = heatUpColor;
         if (Input.GetAxisRaw("Fire1") != 0)
         {
             float rate = Time.deltaTime * (curHeat + .1f);
@@ -112,7 +116,8 @@ public class Overheatting : MonoBehaviour
             curHeat = Mathf.Max(curHeat - Time.deltaTime / 5, 0);
         }
 
-        slider.value = curHeat;
+        RotateDial(curHeat);
+        dialFace.color = Color.Lerp(Color.white, heatUpColor, curHeat);
 
         if (curHeat >= 1)
         {

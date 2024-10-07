@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{d59d3058-03e6-434f-968e-ddbd2d3fec12}">
+		<property name="name">
+			<value>Layer 2 Fader</value>
+		</property>
+		<relationship name="folder">
+			<destination>{a5ad7254-4123-4f4c-9052-76c345d0b66e}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{863121b0-6773-496e-acb6-56ad6e4ce0a7}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{863121b0-6773-496e-acb6-56ad6e4ce0a7}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>

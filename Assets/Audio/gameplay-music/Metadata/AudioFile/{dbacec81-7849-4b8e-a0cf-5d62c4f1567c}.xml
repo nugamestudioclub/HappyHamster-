@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{dbacec81-7849-4b8e-a0cf-5d62c4f1567c}">
+		<property name="assetPath">
+			<value>bloodbath.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.2608541666666666</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e7370b01-df9d-4214-b8ea-5ce32a845d4f}</destination>
+		</relationship>
+	</object>
+</objects>

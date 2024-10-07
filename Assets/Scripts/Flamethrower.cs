@@ -20,12 +20,18 @@ public class Flamethrower : MonoBehaviour
     Overheatting overheat;
     private ComboMultiplier cm;
 
+    //skylar, adding flamethrower sounds
+    private FMOD.Studio.EventInstance instance;
+    public FMODUnity.EventReference flamethrowerFiringEvent;
+
     void Start()
     {
         _collider = this.GetComponent<Collider2D>();
         _spriteRenderer = this.GetComponent<SpriteRenderer>();
         _spriteRenderer.enabled = false;
         cm = this.GetComponent<ComboMultiplier>();
+
+        instance = FMODUnity.RuntimeManager.CreateInstance(flamethrowerFiringEvent);
     }
 
     void Update()
@@ -58,12 +64,19 @@ public class Flamethrower : MonoBehaviour
     {
         _firing = true;
         _spriteRenderer.enabled = true;
+        instance.start();
     }
 
     void Cease()
     {
         _firing = false;
         _spriteRenderer.enabled = false;
+        instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+    }
+
+    public void OnGameOver()
+    {
+        instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
 
@@ -72,7 +85,7 @@ public class Flamethrower : MonoBehaviour
         if (_firing && collision.gameObject.tag.Equals("Enemy"))
         {
             collision.GetComponent<Enemy>().Kill();
-            cm.killedEnemy();
+            //cm.killedEnemy();
         }
     }
 
