@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{17ddfa86-486f-4344-867c-8ae3068b0e7d}">
+		<property name="assetPath">
+			<value>thehorror.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.625</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e7370b01-df9d-4214-b8ea-5ce32a845d4f}</destination>
+		</relationship>
+	</object>
+</objects>
