@@ -29,7 +29,9 @@ public class DisplayAnnouncement : MonoBehaviour
         Debug.Log("Start ran");
 
         enumValues = Enum.GetValues(typeof(TextStates));
-        textObj = gameObject.GetComponent<TMPro.TextMeshProUGUI>();
+        textObj = GetComponent<TMPro.TextMeshProUGUI>();
+
+        Debug.Log(textObj);
 
         textObj.gameObject.SetActive(false);
 
