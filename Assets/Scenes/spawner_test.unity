@@ -1072,6 +1072,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3523786914909376758, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_fontSize
+      value: 127
+      objectReference: {fileID: 0}
+    - target: {fileID: 3523786914909376758, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b02050e0cb5f2345ae28278acff4a7f, type: 2}
+    - target: {fileID: 3523786914909376758, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 127
+      objectReference: {fileID: 0}
+    - target: {fileID: 3523786914909376758, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 4296367561156801736, guid: 7b02050e0cb5f2345ae28278acff4a7f, type: 2}
+    - target: {fileID: 3523786914909376758, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5647299022218641491, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
       propertyPath: m_fontSize
       value: 8
@@ -1154,6 +1174,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6097382063276894541, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511043250830288688, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694688897185024078, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 7694688897185024078, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 7694688897185024078, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8172463008199362751, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
