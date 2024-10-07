@@ -35,7 +35,6 @@ public class DisplayAnnouncement : MonoBehaviour
 
         textObj.gameObject.SetActive(false);
 
-        DisplayText(5);
     }
 
     // Update is called once per frame
@@ -45,7 +44,7 @@ public class DisplayAnnouncement : MonoBehaviour
     }
 
 
-    void DisplayText(int comboIndex)
+    public void DisplayText(int comboIndex)
     {
         Debug.Log("display ran");
 
