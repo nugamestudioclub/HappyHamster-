@@ -32,6 +32,10 @@ public class Enemy : MonoBehaviour
     private FMOD.Studio.EventInstance hamsterDieInstance;
     public FMODUnity.EventReference hamsterDieEvent;
 
+    public EnemyObjectPool enemyPool; // For improved performance
+
+    public DistressObjectPool distressPool; // For improved performance
+
     void SetRandomTarget() {
         _target = new Vector2(Random.Range(-MAP_SIZE, MAP_SIZE), Random.Range(-MAP_SIZE, MAP_SIZE));
     }
@@ -41,27 +45,18 @@ public class Enemy : MonoBehaviour
     {
         enemyCount += 1;
         enemyBody = gameObject.GetComponent<Rigidbody2D>();
+        // Get the pools from scene
+        enemyPool = FindObjectOfType<EnemyObjectPool>();
+        distressPool = FindObjectOfType<DistressObjectPool>();
         SetRandomTarget();
 
         hamsterDieInstance = FMODUnity.RuntimeManager.CreateInstance(hamsterDieEvent);
     }
 
     void Push(Vector2 direction) {
-        // Vector3 newForce = new Vector3(direction.x, direction.y, 0) * speed * Time.deltaTime;
-        // gameObject.GetComponent<Rigidbody2D>().AddForce(newForce);
-        // if (gameObject.GetComponent<Rigidbody2D>().totalForce.magnitude >= MAXFORCE) 
-        // {
-        //     gameObject.GetComponent<Rigidbody2D>().AddForce(-1 * newForce);
-        // }
-        
         //move the enemy without force
         //transform.position += new Vector3(direction.x, direction.y, 0) * (maxVelocity * 3 * Time.fixedDeltaTime);
         enemyBody.velocity = new Vector3(direction.x, direction.y, 0) * (maxVelocity * 3);
-
-        //if (enemyBody.velocity.magnitude < maxVelocity) {
-        //    enemyBody.AddForce(new Vector3(direction.x, direction.y, 0) * acceleration);
-        //}
-
 
         spriteRenderer.flipX = (direction.x >= 0);
     }
@@ -69,14 +64,6 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
 
     GameObject GetDistressSignal(float distance) {
-        // bool foundSignal = false;
-        // foreach (GameObject distressSignal in GameObject.FindGameObjectsWithTag("DistressSignal")) {
-        //     Debug.Log(distressSignal.transform.position);
-        //     if (Vector3.Distance(distressSignal.transform.position, transform.position) < distance) {
-        //         foundSignal = true;
-        //     }
-        // }
-        // return foundSignal;
         GameObject[] activeSignalsArray = GameObject.FindGameObjectsWithTag("DistressSignal");
         List<GameObject> activeSignals = new List<GameObject>(activeSignalsArray);
         
@@ -108,14 +95,6 @@ public class Enemy : MonoBehaviour
         GameObject distressSignal = GetDistressSignal(20.0f);
         if (distressSignal == null) {
             _state = EnemyState.Roam;
-        //} else if ((distressSignal.transform.position - transform.position).magnitude < 6.0f) {
-        //    _run_to = (transform.position - distressSignal.transform.position);
-        //    _state = EnemyState.Run;
-        //    acceleration = 3f;
-        //} else if ((distressSignal.transform.position - player.position).magnitude < 3.0f) {
-        //    _run_to = (transform.position - player.position);
-        //    acceleration = 1.5f;
-        //    _state = EnemyState.Run;
         } else {
             GameObject[] _spawners = GameObject.FindGameObjectsWithTag("SpawnPoint");
 
@@ -193,33 +172,73 @@ public class Enemy : MonoBehaviour
                 break; 
         }
         Push(direction);
-        // if (direction.magnitude < PLAYER_SAFE_DISTANCE) {
-        //     // Move towards from player
-        //     direction.Normalize();
-        //     Push(direction * 2);
-        // } else {
-        //     // Move towards random point
-        //     Vector2 directionToTarget = _target - new Vector2(transform.position.x, transform.position.y);
-        //     if (directionToTarget.magnitude < 1) { // Find a new random target on the map to go to
-        //         SetRandomTarget();
-        //     } else {
-        //         directionToTarget.Normalize();
-        //         Push(directionToTarget);
-        //     }
-        // }
     }
 
 
+    // Kill without Object Pool Optimization
+    // public void Kill()
+    // {
+    //     // TODO: Death vfx and animations and score
+    //     if (!GetDistressSignal(5.0f)) {
+    //         GameObject signal = Instantiate(enemyKilledSignalPrefab, transform.position, Quaternion.identity);
+    //         signal.transform.parent = distressSignals.transform;
+    //         signal.transform.localScale = transform.localScale;
+    //     }
+    //     hamsterDieInstance.start();
+    //     gameObject.SetActive(false);
+    //     enemyCount--;
+    //     Destroy(gameObject, 1f);
+    // }
+
+    // Kill with Object Pool Optimization (OLD)
+    // public void Kill()
+    // {
+    //     // Check for distress signal before handling the enemy's death
+    //     if (!GetDistressSignal(5.0f))
+    //     {
+    //         // Get a distress signal from the pool if needed
+    //         GameObject signal = distressSignalPool.GetFromPool();
+    //         if (signal != null) // Ensure we have a signal
+    //         {
+    //             signal.transform.position = transform.position;
+    //             signal.transform.localScale = transform.localScale;
+    //             signal.transform.parent = distressSignals.transform;
+    //         }
+    //     }
+
+    //     // Play the death sound effect
+    //     hamsterDieInstance.start();
+        
+    //     // Decrement the enemy count
+    //     enemyCount--;
+
+    //     // Return the enemy GameObject to the pool instead of destroying it
+    //     gameObject.SetActive(false); // Deactivate the enemy
+    //     distressSignalPool.ReturnToPool(gameObject); // Return it to the pool
+    // }
+
+    // Kill without Object Pool Optimization
     public void Kill()
     {
         // TODO: Death vfx and animations and score
-        if (!GetDistressSignal(10.0f)) {
-            GameObject signal = Instantiate(enemyKilledSignalPrefab, transform.position, Quaternion.identity);
-            signal.transform.parent = distressSignals.transform;
+        if (!GetDistressSignal(5.0f)) {
+            // Get a distress signal from the pool if needed
+            GameObject signal = distressPool.GetFromPool();
+            if (signal != null) // Ensure we have a signal
+            {
+                signal.transform.position = transform.position;
+                signal.transform.localScale = transform.localScale;
+                signal.transform.parent = distressSignals.transform;
+            }
         }
+        // Play the death sound effect
         hamsterDieInstance.start();
-        gameObject.SetActive(false);
+
+        // Decrement the enemy count
         enemyCount--;
-        Destroy(gameObject, 1f);
+
+        // Return the enemy GameObject to the pool instead of destroying it
+        gameObject.SetActive(false); // Deactivate the enemy
+        enemyPool.ReturnToPool(gameObject); // Return it to the pool
     }
 }

@@ -8,14 +8,14 @@ public class Player : MonoBehaviour
 
     public float speed = 100f;
     public Rigidbody2D rigidBody;
-    public Camera camera;
+    public Camera playerCamera;
     private float _minCameraY;
     private float _maxCameraY;
 
     private void Start()
     {
-        _maxCameraY = 60/2 - camera.orthographicSize; // half the map size (this is so hardcoded)
-        _minCameraY = -60/2 + camera.orthographicSize;
+        _maxCameraY = 60/2 - playerCamera.orthographicSize; // half the map size (this is so hardcoded)
+        _minCameraY = -60/2 + playerCamera.orthographicSize;
     }
 
     void Update()
@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
         Vector2 movement = new Vector2(horizontal, vertical);
         movement.Normalize();
         rigidBody.velocity = movement * speed;
-        camera.transform.position = new Vector3(0, Mathf.Clamp(transform.position.y, _minCameraY, _maxCameraY), -10);
+        playerCamera.transform.position = new Vector3(0, Mathf.Clamp(transform.position.y, _minCameraY, _maxCameraY), -10);
     }
 
 }

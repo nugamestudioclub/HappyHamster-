@@ -9,8 +9,8 @@ public class SpawnManager : MonoBehaviour
     List<GameObject> spawners; // List of spawners
     public int active_spawners; // How many spawners will be active at once
     public GameObject enemyPrefab;
-
     private float _timeElapsed = 0f;
+    public EnemyObjectPool enemyPool; // For improved performance
 
     void Start()
     {
@@ -40,20 +40,52 @@ public class SpawnManager : MonoBehaviour
         return furthest_spawners.GetRange(0, n);
     }
 
-    void SpawnEnemy(GameObject spawnPoint) {
-        GameObject enemy = Instantiate(enemyPrefab, spawnPoint.transform.position, Quaternion.identity);
-        // Set the parent of the enemy to the spawn point
-        enemy.transform.parent = spawnPoint.transform;
+    // Without Object Pooling
+    // void SpawnEnemy(GameObject spawnPoint) {
+    //     GameObject enemy = Instantiate(enemyPrefab, spawnPoint.transform.position, Quaternion.identity);
+    //     // Set the parent of the enemy to the spawn point
+    //     enemy.transform.parent = spawnPoint.transform;
         
+    //     // Add or subtract random scale of up to 0.5f
+    //     float randomSize = Random.Range(-5f, 5f)/10f;
+    //     enemy.transform.localScale += new Vector3(randomSize, randomSize, 0);
+
+    //     Enemy enemyScript = enemy.GetComponent<Enemy>();
+    //     enemyScript.player = player;
+    //     enemyScript.distressSignals = distressSignals;
+    // }
+
+    // With Object Pooling
+    void SpawnEnemy(GameObject spawnPoint)
+    {
+        // Get an enemy from the object pool instead of instantiating it
+        GameObject enemy = enemyPool.GetFromPool(); // Assuming enemyPool is an instance of ObjectPool for enemies
+
+        // If no enemy is available, you might want to handle it (e.g., log an error or instantiate a new one)
+        if (enemy == null)
+        {
+            Debug.LogError("No enemies available in the pool!");
+            return;
+        }
+
+        // Set the position of the enemy to the spawn point
+        enemy.transform.position = spawnPoint.transform.position;
+        
+        // Optionally reset the scale
+        enemy.transform.localScale = Vector3.one; // Reset to default scale, can adjust as needed
+
         // Add or subtract random scale of up to 0.5f
-        float randomSize = Random.Range(-5f, 5f)/10f;
+        float randomSize = Random.Range(-5f, 5f) / 10f;
         enemy.transform.localScale += new Vector3(randomSize, randomSize, 0);
 
+        // Set the parent of the enemy to the spawn point
+        enemy.transform.parent = spawnPoint.transform;
+
+        // Get the Enemy script and set necessary references
         Enemy enemyScript = enemy.GetComponent<Enemy>();
         enemyScript.player = player;
         enemyScript.distressSignals = distressSignals;
     }
-    
 
     // Update is called once per frame
     void Update()

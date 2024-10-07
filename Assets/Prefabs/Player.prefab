@@ -157,7 +157,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 90
   m_Sprite: {fileID: 21300000, guid: 069586915b648df4cb7f0b40299dea57, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -470,6 +470,20 @@ MonoBehaviour:
   baseCoolRate: 1
   fastCoolRate: 3
   slowCoolRate: 0.5
+  flamethrowerAlarmEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  qteSuccessEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &7424492429030027124
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,8 +534,15 @@ MonoBehaviour:
   hitboxCenter: {x: 0, y: 0}
   hitboxSize: {x: 0.02, y: 0.02}
   _pointer: {fileID: 1917800187162695234}
-  _visualFlame: {fileID: 5852372728110575054}
   overheat: {fileID: 2831268560094407197}
+  _visualFlame: {fileID: 5852372728110575054}
+  flamethrowerFiringEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!212 &2362415040341957097
 SpriteRenderer:
   m_ObjectHideFlags: 0
