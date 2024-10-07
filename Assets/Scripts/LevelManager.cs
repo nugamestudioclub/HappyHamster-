@@ -90,6 +90,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
+            sliderFill.gameObject.SetActive(true); // Cause bar toggling
             timer.gameObject.SetActive(false);
             curTime = maxGracePeriod;
             isInGrace = false;

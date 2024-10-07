@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
         Vector2 movement = new Vector2(horizontal, vertical);
         movement.Normalize();
         rigidBody.velocity = movement * speed;
-        camera.transform.position = new Vector3(0, Mathf.Clamp(camera.transform.position.y, _minCameraY, _maxCameraY), -10);
+        camera.transform.position = new Vector3(0, Mathf.Clamp(transform.position.y, _minCameraY, _maxCameraY), -10);
     }
 
 }

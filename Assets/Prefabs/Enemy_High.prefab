@@ -132,7 +132,6 @@ MonoBehaviour:
   distressSignals: {fileID: 0}
   enemyKilledSignalPrefab: {fileID: 2883131632186979932, guid: dbd9831beab981d43af562a542371437, type: 3}
   enemyBody: {fileID: 4822651128574908127}
-  isMoving: 0
   spriteRenderer: {fileID: 8856566182439088599}
   maxVelocity: 0.2
   hamsterDieEvent:
@@ -208,6 +207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8129043583460243982}
   - component: {fileID: 7829893794108325998}
+  - component: {fileID: 2740852369259344613}
   m_Layer: 0
   m_Name: IMG_1945
   m_TagString: Untagged
@@ -270,8 +270,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 99
-  m_Sprite: {fileID: 21300000, guid: acec508346d1e714f8be8dd683b80b96, type: 3}
+  m_SortingOrder: 100
+  m_Sprite: {fileID: 21300000, guid: 518e164a2d0668f4c8520f9146a0cb4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -282,3 +282,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2740852369259344613
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244612422095669464}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c043ace8a09649448f1325fd7b81c6c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
