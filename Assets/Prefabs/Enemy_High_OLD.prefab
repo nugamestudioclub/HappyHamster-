@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 4822651128574908127}
   - component: {fileID: 4247660913776144748}
   - component: {fileID: 3042407976051814625}
-  - component: {fileID: -5189433184445892901}
+  - component: {fileID: 7153520972303558218}
   m_Layer: 0
-  m_Name: Enemy_High
+  m_Name: Enemy_High_OLD
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907049277261265459}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -103,7 +103,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 0.1
   m_LinearDrag: 0
-  m_AngularDrag: 10000
+  m_AngularDrag: 100
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -133,15 +133,8 @@ MonoBehaviour:
   enemyKilledSignalPrefab: {fileID: 2883131632186979932, guid: dbd9831beab981d43af562a542371437, type: 3}
   enemyBody: {fileID: 4822651128574908127}
   isMoving: 0
-  spriteRenderer: {fileID: 8856566182439088599}
+  spriteRenderer: {fileID: 7829893794108325998}
   maxVelocity: 0.2
-  hamsterDieEvent:
-    Guid:
-      Data1: -286054790
-      Data2: 1315708904
-      Data3: 536028059
-      Data4: 1850160847
-    Path: event:/Hamster Death
 --- !u!58 &3042407976051814625
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -177,7 +170,7 @@ CircleCollider2D:
   m_Offset: {x: 0.1, y: -0.3}
   serializedVersion: 2
   m_Radius: 0.35
---- !u!95 &-5189433184445892901
+--- !u!95 &7153520972303558218
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -185,12 +178,12 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907049277261265459}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 3c043ace8a09649448f1325fd7b81c6c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -208,6 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8129043583460243982}
   - component: {fileID: 7829893794108325998}
+  - component: {fileID: 5430962121556007660}
   m_Layer: 0
   m_Name: IMG_1945
   m_TagString: Untagged
@@ -270,8 +264,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 99
-  m_Sprite: {fileID: 21300000, guid: acec508346d1e714f8be8dd683b80b96, type: 3}
+  m_SortingOrder: 100
+  m_Sprite: {fileID: 21300000, guid: 518e164a2d0668f4c8520f9146a0cb4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -282,3 +276,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &5430962121556007660
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244612422095669464}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c043ace8a09649448f1325fd7b81c6c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

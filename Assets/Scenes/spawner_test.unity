@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f95de8c7f2428488a9804485cce498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHamsters: 250
+  maxHamsters: 1000
   currentHamsters: 0
   maxGracePeriod: 5
   endScreen: {fileID: 2043801515}
@@ -411,6 +411,10 @@ PrefabInstance:
       propertyPath: _currentHeat
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3326954108161617756, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
+      propertyPath: _visualFlame
+      value: 
+      objectReference: {fileID: 1963987701}
     - target: {fileID: 3326954108161617756, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
       propertyPath: _cooldownRate
       value: 1
@@ -1557,6 +1561,11 @@ MonoBehaviour:
   _initialThresh: 10
   _threshRate: 2
   score: 0
+--- !u!1 &1963987701 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1971948307984794161, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
+  m_PrefabInstance: {fileID: 326137004}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1973961453
 GameObject:
   m_ObjectHideFlags: 0
