@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -25,7 +24,11 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private TMP_Text timer;
     [SerializeField]
+    private TMP_Text finalScoreText;
+    [SerializeField]
     private Slider enemiesOnScreen;
+    public ComboMultiplier comboMultiplier;
+    public int abc;
     public static bool isGameOver = false;
 
     private float _elapsedTime = 0f;
@@ -81,6 +84,7 @@ public class LevelManager : MonoBehaviour
         endScreen.SetActive(true);
         timer.gameObject.SetActive(false);
         slider.gameObject.SetActive(false);
+        finalScoreText.text = "Final Score: " + comboMultiplier.score;
         Time.timeScale = 0f;
     }
 
