@@ -55,7 +55,7 @@ public class Flamethrower : MonoBehaviour
                 if (enemy != null) 
                 {
                     enemy.Kill();
-
+                    cm.killedEnemy();
                 }
             }
         }
@@ -78,7 +78,6 @@ public class Flamethrower : MonoBehaviour
     {
         instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
-
 
     void OnTriggerEnter2D(Collider2D collision)
     {

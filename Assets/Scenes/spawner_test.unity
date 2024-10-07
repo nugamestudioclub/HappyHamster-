@@ -233,15 +233,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f95de8c7f2428488a9804485cce498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHamsters: 50
+  maxHamsters: 250
   currentHamsters: 0
   maxGracePeriod: 5
   endScreen: {fileID: 2043801515}
   slider: {fileID: 1607652443}
   sliderFill: {fileID: 2116385424}
   timer: {fileID: 1292490273}
+  finalScoreText: {fileID: 1582477716}
+  comboMultiplier: {fileID: 1803340151}
   enemiesOnScreen: {fileID: 1607652445}
-  flamethrower: {fileID: 0}
 --- !u!4 &195679255
 Transform:
   m_ObjectHideFlags: 0
@@ -464,7 +465,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1917800187162695234, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 793037258}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7424492429030027124, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1803340151}
   m_SourcePrefab: {fileID: 100100000, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
 --- !u!4 &326137010 stripped
 Transform:
@@ -1018,14 +1022,14 @@ PrefabInstance:
     - target: {fileID: 8172463008199362751, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 195679254}
     - target: {fileID: 8172463008199362751, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8172463008199362751, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: OnFinishClick
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1505,6 +1509,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2133166496}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1582477716 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7694688897185024078, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
+  m_PrefabInstance: {fileID: 551202506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1607652443 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 367536145629271295, guid: 69d51f4b7441b7e44949b9340cd9d328, type: 3}
@@ -1521,6 +1536,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1803340146 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7424492429030027124, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
+  m_PrefabInstance: {fileID: 326137004}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1803340151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803340146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cae804921850ee44f8c0e613a70544ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _comboTime: 10
+  _initialThresh: 10
+  _threshRate: 2
+  score: 0
 --- !u!1 &1973961453
 GameObject:
   m_ObjectHideFlags: 0
