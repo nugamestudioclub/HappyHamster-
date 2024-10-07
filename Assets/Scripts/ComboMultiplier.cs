@@ -17,7 +17,8 @@ public class ComboMultiplier : MonoBehaviour
 
 
     private int _enemiesKilled = 0;
-    private float _scoreMult = 1;
+    [HideInInspector]
+    public float _scoreMult = 1;
     private int _nextKillThreshhold;
 
     private bool _onKillingSpree;
