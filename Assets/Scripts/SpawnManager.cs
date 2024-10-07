@@ -43,8 +43,12 @@ public class SpawnManager : MonoBehaviour
     void SpawnEnemy(GameObject spawnPoint) {
         GameObject enemy = Instantiate(enemyPrefab, spawnPoint.transform.position, Quaternion.identity);
         // Set the parent of the enemy to the spawn point
-        // Debug.Log(Enemy.enemyCount);
         enemy.transform.parent = spawnPoint.transform;
+        
+        // Add or subtract random scale of up to 0.5f
+        float randomSize = Random.Range(-5f, 5f)/10f;
+        enemy.transform.localScale += new Vector3(randomSize, randomSize, 0);
+
         Enemy enemyScript = enemy.GetComponent<Enemy>();
         enemyScript.player = player;
         enemyScript.distressSignals = distressSignals;

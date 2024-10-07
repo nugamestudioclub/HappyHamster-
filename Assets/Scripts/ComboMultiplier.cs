@@ -80,7 +80,7 @@ public class ComboMultiplier : MonoBehaviour
     void increaseTheCombo()
     {
         _scoreMult++;
-        Debug.Log("among us");
+        //Debug.Log("among us");
         _nextKillThreshhold *= _threshRate;
         _timeSpreeStarted = _currentTime;
 
