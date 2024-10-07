@@ -132,9 +132,15 @@ MonoBehaviour:
   distressSignals: {fileID: 0}
   enemyKilledSignalPrefab: {fileID: 2883131632186979932, guid: dbd9831beab981d43af562a542371437, type: 3}
   enemyBody: {fileID: 4822651128574908127}
-  isMoving: 0
   spriteRenderer: {fileID: 7829893794108325998}
   maxVelocity: 0.2
+  hamsterDieEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!58 &3042407976051814625
 CircleCollider2D:
   m_ObjectHideFlags: 0
