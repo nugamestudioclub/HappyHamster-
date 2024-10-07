@@ -50,7 +50,7 @@ public class MusicManager : MonoBehaviour
     }
 
     public void OnGameStart() {
-        instance.setParameterByName("Low Pass", 1f);
+        instance.setParameterByName("Low Pass", 0f);
     }
 
     public void OnGameOver() {
