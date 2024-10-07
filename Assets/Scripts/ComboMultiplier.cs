@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class ComboMultiplier : MonoBehaviour
 {
+
+    [SerializeField]
+    private GameObject textObj;
+    private DisplayAnnouncement announcementText;
+
+
     [SerializeField]
     private float _comboTime = 10;
     [SerializeField]
@@ -32,6 +38,8 @@ public class ComboMultiplier : MonoBehaviour
 
         announceInstance = FMODUnity.RuntimeManager.CreateInstance(announceEvent);
         announceInstance.setParameterByName("Combo Picker", 1);
+
+        announcementText = textObj.GetComponent<DisplayAnnouncement>();
     }
 
     void Update()
@@ -80,18 +88,26 @@ public class ComboMultiplier : MonoBehaviour
         if (_scoreMult == 2.0f)
         {
             announceInstance.setParameterByName("Combo Picker", 1);
+            announcementText.DisplayText(1);
         } else if (_scoreMult == 3.0f)
         { 
             announceInstance.setParameterByName("Combo Picker", 2);
-        } else if (_scoreMult == 4.0f)
+            announcementText.DisplayText(2);
+        }
+        else if (_scoreMult == 4.0f)
         {
             announceInstance.setParameterByName("Combo Picker", 3);
-        } else if ( _scoreMult == 5.0f) 
+            announcementText.DisplayText(3);
+        }
+        else if ( _scoreMult == 5.0f) 
         { 
             announceInstance.setParameterByName("Combo Picker", 4);
-        } else
+            announcementText.DisplayText(4);
+        }
+        else
         {
             announceInstance.setParameterByName("Combo Picker", 5);
+            announcementText.DisplayText(5);
         }
         announceInstance.start();
     }
