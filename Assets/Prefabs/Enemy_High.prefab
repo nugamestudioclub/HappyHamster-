@@ -141,7 +141,8 @@ MonoBehaviour:
       Data3: 536028059
       Data4: 1850160847
     Path: event:/Hamster Death
-  EnemyPool: {fileID: 0}
+  enemyPool: {fileID: 0}
+  distressPool: {fileID: 0}
 --- !u!58 &3042407976051814625
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -226,7 +227,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4875908943187171109}

@@ -277,7 +277,7 @@ public class Enemy : MonoBehaviour
         // TODO: Death vfx and animations and score
 
         // Potentially spawn a distress signal 
-        if (Random.Range(0, 100) < 10) { //(!GetDistressSignal(5.0f)) {
+        if ((Random.Range(0, 100) < 5) || !GetDistressSignal(10.0f)) { //(!GetDistressSignal(5.0f)) {
             // Get a distress signal from the pool if needed
             GameObject signal = distressPool.GetFromPool();
             
