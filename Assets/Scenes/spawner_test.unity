@@ -345,7 +345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHamsters: 900
   currentHamsters: 0
-  maxGracePeriod: 5
+  maxGracePeriod: 4
   endScreen: {fileID: 2043801515}
   slider: {fileID: 1607652443}
   sliderFill: {fileID: 1482283770}

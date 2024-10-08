@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     public int currentHamsters;
     [SerializeField]
-    private float maxGracePeriod = 5f;
+    private float maxGracePeriod = 4f;
     private float curTime = 1f;
     private bool isInGrace;
     [SerializeField]
