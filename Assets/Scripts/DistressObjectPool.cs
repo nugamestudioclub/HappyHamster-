@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,5 +25,13 @@ public class DistressObjectPool : MonoBehaviour
     {
         obj.SetActive(false);
         pool.Enqueue(obj);
+    }
+
+    public IEnumerator ReturnToPoolAfterDelay(GameObject obj, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+    
+        // Return the enemy GameObject to the pool
+        ReturnToPool(obj);
     }
 }

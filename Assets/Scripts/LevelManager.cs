@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private int maxHamsters;
     [SerializeField]
-    private int currentHamsters;
+    public int currentHamsters;
     [SerializeField]
     private float maxGracePeriod = 5f;
     private float curTime = 1f;
@@ -39,11 +39,14 @@ public class LevelManager : MonoBehaviour
 
     private Flamethrower flamethrower;
 
+    private EnemyObjectPool enemyPool;
+
     // Start is called before the first frame update
     void Start()
     {
         musicManager = GameObject.Find("MusicSystem").GetComponent<MusicManager>();
         flamethrower = GameObject.Find("Flame Hitbox").GetComponent<Flamethrower>();
+        enemyPool = GameObject.Find("EnemyObjectPool").GetComponent<EnemyObjectPool>();
     }
 
     void StartGame() {
@@ -64,13 +67,13 @@ public class LevelManager : MonoBehaviour
             SceneManager.SetActiveScene(SceneManager.GetSceneByName("spawner_test"));
             return;
         }
-        currentHamsters = Enemy.enemyCount;
+        //currentHamsters = Enemy.enemyCount;
         if (curTime <= 0)
         {
             FinishGame();
             return;
         }
-        _elapsedTime += Time.deltaTime*2;
+        _elapsedTime += Time.deltaTime * 2;
         if (maxHamsters <= currentHamsters && isInGrace)
         {
             curTime -= Time.deltaTime;
@@ -109,6 +112,7 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 0f;
         musicManager.OnGameOver();
         flamethrower.OnGameOver();
+        enemyPool.DestroyAllInPool();
     }
 
 

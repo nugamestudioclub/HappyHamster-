@@ -8,16 +8,33 @@ public class DistressSignal : MonoBehaviour
 
     float duration = 5f;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake() // cannot use Start() because OnEnable is called before it
     {
         distressPool = FindObjectOfType<DistressObjectPool>();
-        StartCoroutine(DeleteMe());
     }
 
-    IEnumerator DeleteMe() {
-        yield return new WaitForSeconds(duration);
-        gameObject.SetActive(false); // Deactivate the enemy
-        distressPool.ReturnToPool(gameObject); // Return it to the pool
+    void OnEnable() 
+    {
+        distressPool = FindObjectOfType<DistressObjectPool>();
+        StartCoroutine(distressPool.ReturnToPoolAfterDelay(gameObject, duration));
     }
+
+    // void OnDisable() 
+    // {
+    //     distressPool.ReturnToPool(gameObject)
+    // }
+
+    // Start is called before the first frame update
+    // void Start()
+    // {
+    //     distressPool = FindObjectOfType<DistressObjectPool>();
+    //     StartCoroutine(DeleteMe());
+    // }
+
+    // IEnumerator DeleteMe() {
+    //     yield return new WaitForSeconds(duration);
+    //     //gameObject.transform.position = new Vector3(0,0,1); // no clue how to toggle visibility of ash
+    //     //gameObject.SetActive(false); // Deactivate the enemy
+    //     distressPool.ReturnToPool(gameObject); // Return it to the pool
+    // }
 }
