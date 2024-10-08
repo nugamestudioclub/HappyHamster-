@@ -522,6 +522,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 953193267}
     - target: {fileID: 2831268560094407197, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
+      propertyPath: slowCoolRate
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2831268560094407197, guid: e3178af767c1b0d41b8606eea9dbba9f, type: 3}
       propertyPath: coolDownQTEImage
       value: 
       objectReference: {fileID: 183907365}
