@@ -155,7 +155,7 @@ public class Enemy : MonoBehaviour
         float distanceToSignal = deltaSignal.magnitude;
 
         // Calculate signal weight
-        float signalWeight = 40f / (distanceToSignal * distanceToSignal + 1e-5f);
+        float signalWeight = 50f / (distanceToSignal * distanceToSignal + 1e-5f);
         Vector3 weightedDeltaSignal = deltaSignal * signalWeight;
 
         Vector3 playerPosition = player.position;
@@ -163,11 +163,12 @@ public class Enemy : MonoBehaviour
         float distanceToPlayer = deltaPlayer.magnitude;
 
         // Calculate player weight
-        float playerWeight = 60f / (distanceToPlayer * distanceToPlayer + 1e-5f);
+        float playerWeight = 80f / (distanceToPlayer * distanceToPlayer + 1e-5f);
         Vector3 weightedDeltaPlayer = deltaPlayer * playerWeight;
 
         // Choose the stronger direction
-        Vector3 targetDirection = playerWeight > signalWeight ? weightedDeltaPlayer : weightedDeltaSignal;
+        //Vector3 targetDirection = playerWeight > signalWeight ? weightedDeltaPlayer : weightedDeltaSignal;
+        Vector3 targetDirection = (weightedDeltaPlayer + weightedDeltaSignal);
 
         // Incorporate the spawner position
         Vector3 deltaSpawnerSignal = (spawner.transform.position - distressPosition);
