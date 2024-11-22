@@ -26,11 +26,18 @@ public class Enemy : MonoBehaviour
 
     const int MAP_SIZE = 57/2;
     const int PLAYER_SAFE_DISTANCE = 10;
-    public float maxVelocity = 0.2f; // in units per second
+    public float maxVelocity = 2f; // in units per second
     private EnemyState _state = EnemyState.Roam;
 
     private FMOD.Studio.EventInstance hamsterDieInstance;
     public FMODUnity.EventReference hamsterDieEvent;
+
+    public EnemyObjectPool enemyPool; // For improved performance
+
+    public DistressObjectPool distressPool; // For improved performance
+
+    private float distressCheckInterval = 0.25f; // Check every [value] second
+    private float timeSinceLastCheck = 0f;
 
     void SetRandomTarget() {
         _target = new Vector2(Random.Range(-MAP_SIZE, MAP_SIZE), Random.Range(-MAP_SIZE, MAP_SIZE));
@@ -39,28 +46,20 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemyCount += 1;
+        //enemyCount += 1;
+        enemyBody = gameObject.GetComponent<Rigidbody2D>();
+        // Get the pools from scene
+        enemyPool = FindObjectOfType<EnemyObjectPool>();
+        distressPool = FindObjectOfType<DistressObjectPool>();
         SetRandomTarget();
 
         hamsterDieInstance = FMODUnity.RuntimeManager.CreateInstance(hamsterDieEvent);
     }
 
     void Push(Vector2 direction) {
-        // Vector3 newForce = new Vector3(direction.x, direction.y, 0) * speed * Time.deltaTime;
-        // gameObject.GetComponent<Rigidbody2D>().AddForce(newForce);
-        // if (gameObject.GetComponent<Rigidbody2D>().totalForce.magnitude >= MAXFORCE) 
-        // {
-        //     gameObject.GetComponent<Rigidbody2D>().AddForce(-1 * newForce);
-        // }
-        
         //move the enemy without force
-        transform.position += new Vector3(direction.x, direction.y, 0) * maxVelocity * Time.fixedDeltaTime * 65f;
-        // enemyBody.velocity = new Vector2(direction.x, direction.y) * maxVelocity * 80f;
-
-        //if (enemyBody.velocity.magnitude < maxVelocity) {
-        //    enemyBody.AddForce(new Vector3(direction.x, direction.y, 0) * acceleration);
-        //}
-
+        //transform.position += new Vector3(direction.x, direction.y, 0) * (maxVelocity * 3 * Time.fixedDeltaTime);
+        enemyBody.velocity = new Vector3(direction.x, direction.y, 0) * (maxVelocity * 3);
 
         spriteRenderer.flipX = (direction.x >= 0);
     }
@@ -68,14 +67,6 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
 
     GameObject GetDistressSignal(float distance) {
-        // bool foundSignal = false;
-        // foreach (GameObject distressSignal in GameObject.FindGameObjectsWithTag("DistressSignal")) {
-        //     Debug.Log(distressSignal.transform.position);
-        //     if (Vector3.Distance(distressSignal.transform.position, transform.position) < distance) {
-        //         foundSignal = true;
-        //     }
-        // }
-        // return foundSignal;
         GameObject[] activeSignalsArray = GameObject.FindGameObjectsWithTag("DistressSignal");
         List<GameObject> activeSignals = new List<GameObject>(activeSignalsArray);
         
@@ -103,66 +94,110 @@ public class Enemy : MonoBehaviour
         return spawners.OrderByDescending(spawner => Vector3.Distance(player.position, spawner.transform.position)).ToList();
     }
 
+    // void CheckForDistressSignals() {
+    //     GameObject distressSignal = GetDistressSignal(20.0f);
+    //     if (distressSignal == null) {
+    //         _state = EnemyState.Roam;
+    //     } else {
+    //         GameObject[] _spawners = GameObject.FindGameObjectsWithTag("SpawnPoint");
+
+    //         GameObject spawner = SortObjectsByDistance2(_spawners.ToList())[0];
+            
+    //         Vector3 deltaSpawnerSignal = (spawner.transform.position - distressSignal.transform.position);
+
+    //         //Scale the signal direction by distance to the signal
+    //         Vector3 position = transform.position;
+    //         Vector3 distressPosition = distressSignal.transform.position;
+
+    //         Vector3 deltaSignal = position - distressPosition;
+    //         float distanceToSignal = deltaSignal.magnitude;
+
+    //         float signalWeight = 40f / (distanceToSignal * distanceToSignal + 1e-5f);
+    //         Vector3 weightedDeltaSignal = deltaSignal * signalWeight;
+
+    //         Vector3 playerPosition = player.position;
+
+    //         Vector3 deltaPlayer = position - playerPosition;
+    //         float distanceToPlayer = deltaPlayer.magnitude;
+
+    //         float playerWeight = 60f / (distanceToPlayer * distanceToPlayer + 1e-5f);
+    //         Vector3 weightedDeltaPlayer = deltaPlayer * playerWeight;
+
+    //         if (playerWeight > signalWeight) {
+    //             weightedDeltaSignal = weightedDeltaPlayer;
+    //         }
+
+    //         // Calculate the run direction
+    //         _run_to = (weightedDeltaSignal + deltaSpawnerSignal); //(weightedDeltaSignal + weightedDeltaPlayer + deltaSpawnerSignal);
+
+    //         //_run_to =  deltaSpawnerSignal; // (((transform.position - distressSignal.transform.position) * 1/(distressSignal.transform.position - transform.position).magnitude * 50f) + (spawner.transform.position - transform.position))/2;
+    //         _state = EnemyState.Run;
+    //         maxVelocity = 6f;
+    //     }
+    // }
+
+    // Experimental
     void CheckForDistressSignals() {
         GameObject distressSignal = GetDistressSignal(20.0f);
+        
         if (distressSignal == null) {
             _state = EnemyState.Roam;
-        //} else if ((distressSignal.transform.position - transform.position).magnitude < 6.0f) {
-        //    _run_to = (transform.position - distressSignal.transform.position);
-        //    _state = EnemyState.Run;
-        //    acceleration = 3f;
-        //} else if ((distressSignal.transform.position - player.position).magnitude < 3.0f) {
-        //    _run_to = (transform.position - player.position);
-        //    acceleration = 1.5f;
-        //    _state = EnemyState.Run;
-        } else {
-            GameObject[] _spawners = GameObject.FindGameObjectsWithTag("SpawnPoint");
-
-            GameObject spawner = SortObjectsByDistance2(_spawners.ToList())[0];
-            
-            Vector3 deltaSpawnerSignal = (spawner.transform.position - distressSignal.transform.position);
-
-            //Scale the signal direction by distance to the signal
-            Vector3 position = transform.position;
-            Vector3 distressPosition = distressSignal.transform.position;
-
-            Vector3 deltaSignal = position - distressPosition;
-            float distanceToSignal = deltaSignal.magnitude;
-
-            float signalWeight = 50f / (distanceToSignal * distanceToSignal + 1e-5f);
-            Vector3 weightedDeltaSignal = deltaSignal * signalWeight;
-
-            Vector3 playerPosition = player.position;
-
-            Vector3 deltaPlayer = position - playerPosition;
-            float distanceToPlayer = deltaPlayer.magnitude;
-
-            float playerWeight = 80f / (distanceToPlayer * distanceToPlayer + 1e-5f);
-            Vector3 weightedDeltaPlayer = deltaPlayer * playerWeight;
-
-            // Calculate the run direction
-            _run_to = (weightedDeltaSignal + weightedDeltaPlayer + deltaSpawnerSignal);
-
-            //_run_to =  deltaSpawnerSignal; // (((transform.position - distressSignal.transform.position) * 1/(distressSignal.transform.position - transform.position).magnitude * 50f) + (spawner.transform.position - transform.position))/2;
-            _state = EnemyState.Run;
-            maxVelocity = 0.2f;
+            return;
         }
+        
+        GameObject[] _spawners = GameObject.FindGameObjectsWithTag("SpawnPoint");
+        GameObject spawner = SortObjectsByDistance2(_spawners.ToList())[0];
+        
+        Vector3 position = transform.position;
+        Vector3 distressPosition = distressSignal.transform.position;
+
+        Vector3 deltaSignal = position - distressPosition;
+        float distanceToSignal = deltaSignal.magnitude;
+
+        // Calculate signal weight
+        float signalWeight = 50f / (distanceToSignal * distanceToSignal + 1e-5f);
+        Vector3 weightedDeltaSignal = deltaSignal * signalWeight;
+
+        Vector3 playerPosition = player.position;
+        Vector3 deltaPlayer = position - playerPosition;
+        float distanceToPlayer = deltaPlayer.magnitude;
+
+        // Calculate player weight
+        float playerWeight = 80f / (distanceToPlayer * distanceToPlayer + 1e-5f);
+        Vector3 weightedDeltaPlayer = deltaPlayer * playerWeight;
+
+        // Choose the stronger direction
+        //Vector3 targetDirection = playerWeight > signalWeight ? weightedDeltaPlayer : weightedDeltaSignal;
+        Vector3 targetDirection = (weightedDeltaPlayer + weightedDeltaSignal);
+
+        // Incorporate the spawner position
+        Vector3 deltaSpawnerSignal = (spawner.transform.position - distressPosition);
+        _run_to = Vector3.Lerp(targetDirection, deltaSpawnerSignal, 0.5f); // Blend towards spawner
+
+        // Normalize the direction and apply velocity
+        _run_to.Normalize();
+        _run_to *= maxVelocity;
+
+        // Update enemy state
+        _state = EnemyState.Run;
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-
-        if (player == null || distressSignals == null) {
-            Debug.Log("Player or distressSignals not set");
+        // No longer checks per frame
+        timeSinceLastCheck += Time.deltaTime;
+        if (timeSinceLastCheck < distressCheckInterval) {
             return;
         }
+        timeSinceLastCheck = 0f; // Reset the timer
         CheckForDistressSignals();
+
         Vector2 direction = player.position - transform.position;
         switch (_state) {
             case EnemyState.Run:
                 direction = _run_to; //((transform.position - _run_from.transform.position) + (transform.position - player.position) + new Vector3(Random.Range(-MAP_SIZE, MAP_SIZE), Random.Range(-MAP_SIZE, MAP_SIZE), 0))/3; //-direction;
-                direction.Normalize();
+                //direction.Normalize();
                 break;
             case EnemyState.Idle:
                 direction = Vector2.zero;
@@ -170,7 +205,7 @@ public class Enemy : MonoBehaviour
                 break;
             case EnemyState.Roam:
                 // Move towards random point
-                maxVelocity = 0.1f;
+                maxVelocity = 3f;
                 if (direction.magnitude < PLAYER_SAFE_DISTANCE) {
                     _state = EnemyState.HugPlayer;
                     direction.Normalize();
@@ -185,40 +220,84 @@ public class Enemy : MonoBehaviour
                 if (Random.Range(0, 100000) < 10) _state = EnemyState.Idle;
                 break;
             case EnemyState.HugPlayer:
-                maxVelocity = 0.05f;
+                maxVelocity = 1.5f;
                 direction.Normalize();
                 break;    
             default:
                 break; 
         }
         Push(direction);
-        // if (direction.magnitude < PLAYER_SAFE_DISTANCE) {
-        //     // Move towards from player
-        //     direction.Normalize();
-        //     Push(direction * 2);
-        // } else {
-        //     // Move towards random point
-        //     Vector2 directionToTarget = _target - new Vector2(transform.position.x, transform.position.y);
-        //     if (directionToTarget.magnitude < 1) { // Find a new random target on the map to go to
-        //         SetRandomTarget();
-        //     } else {
-        //         directionToTarget.Normalize();
-        //         Push(directionToTarget);
-        //     }
-        // }
     }
 
 
+    // Kill without Object Pool Optimization
+    // public void Kill()
+    // {
+    //     // TODO: Death vfx and animations and score
+    //     if (!GetDistressSignal(5.0f)) {
+    //         GameObject signal = Instantiate(enemyKilledSignalPrefab, transform.position, Quaternion.identity);
+    //         signal.transform.parent = distressSignals.transform;
+    //         signal.transform.localScale = transform.localScale;
+    //     }
+    //     hamsterDieInstance.start();
+    //     gameObject.SetActive(false);
+    //     enemyCount--;
+    //     Destroy(gameObject, 1f);
+    // }
+
+    // Kill with Object Pool Optimization (OLD)
+    // public void Kill()
+    // {
+    //     // Check for distress signal before handling the enemy's death
+    //     if (!GetDistressSignal(5.0f))
+    //     {
+    //         // Get a distress signal from the pool if needed
+    //         GameObject signal = distressSignalPool.GetFromPool();
+    //         if (signal != null) // Ensure we have a signal
+    //         {
+    //             signal.transform.position = transform.position;
+    //             signal.transform.localScale = transform.localScale;
+    //             signal.transform.parent = distressSignals.transform;
+    //         }
+    //     }
+
+    //     // Play the death sound effect
+    //     hamsterDieInstance.start();
+        
+    //     // Decrement the enemy count
+    //     enemyCount--;
+
+    //     // Return the enemy GameObject to the pool instead of destroying it
+    //     gameObject.SetActive(false); // Deactivate the enemy
+    //     distressSignalPool.ReturnToPool(gameObject); // Return it to the pool
+    // }
+
+    // Kill without Object Pool Optimization
     public void Kill()
     {
         // TODO: Death vfx and animations and score
-        if (!GetDistressSignal(10.0f)) {
-            GameObject signal = Instantiate(enemyKilledSignalPrefab, transform.position, Quaternion.identity);
-            signal.transform.parent = distressSignals.transform;
+
+        // Potentially spawn a distress signal 
+        if ((Random.Range(0, 100) < 5) || !GetDistressSignal(10.0f)) { //(!GetDistressSignal(5.0f)) {
+            // Get a distress signal from the pool if needed
+            GameObject signal = distressPool.GetFromPool();
+            
+            if (signal != null) // Ensure we have a signal
+            {
+                signal.transform.position = transform.position;
+                signal.transform.localScale = transform.localScale;
+                signal.transform.parent = distressSignals.transform;
+                // No need to returnToPool, signal self deletes
+            }
         }
+
+        // Play the death sound effect
         hamsterDieInstance.start();
-        gameObject.SetActive(false);
-        enemyCount--;
-        Destroy(gameObject, 1f);
+        
+        // Deincrement the enemy count (well it's in pool now)
+        //enemyCount--;
+
+        // Return the enemy GameObject to the pool instead of destroying it
+        enemyPool.ReturnToPool(gameObject);
     }
 }

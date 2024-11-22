@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,9 +10,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private int maxHamsters;
     [SerializeField]
-    private int currentHamsters;
+    public int currentHamsters;
     [SerializeField]
-    private float maxGracePeriod = 5f;
+    private float maxGracePeriod = 4f;
     private float curTime = 1f;
     private bool isInGrace;
     [SerializeField]
@@ -24,6 +23,10 @@ public class LevelManager : MonoBehaviour
     private Image sliderFill;
     [SerializeField]
     private TMP_Text timer;
+    [SerializeField]
+    private TMP_Text finalScoreText;
+    [SerializeField]
+    public ComboMultiplier comboMultiplier;
     [SerializeField]
     private Slider enemiesOnScreen;
     public static bool isGameOver = false;
@@ -36,11 +39,14 @@ public class LevelManager : MonoBehaviour
 
     private Flamethrower flamethrower;
 
+    private EnemyObjectPool enemyPool;
+
     // Start is called before the first frame update
     void Start()
     {
         musicManager = GameObject.Find("MusicSystem").GetComponent<MusicManager>();
         flamethrower = GameObject.Find("Flame Hitbox").GetComponent<Flamethrower>();
+        enemyPool = GameObject.Find("EnemyObjectPool").GetComponent<EnemyObjectPool>();
     }
 
     void StartGame() {
@@ -61,13 +67,13 @@ public class LevelManager : MonoBehaviour
             SceneManager.SetActiveScene(SceneManager.GetSceneByName("spawner_test"));
             return;
         }
-        currentHamsters = Enemy.enemyCount;
+        //currentHamsters = Enemy.enemyCount;
         if (curTime <= 0)
         {
             FinishGame();
             return;
         }
-        _elapsedTime += Time.deltaTime*2;
+        _elapsedTime += Time.deltaTime * 2;
         if (maxHamsters <= currentHamsters && isInGrace)
         {
             curTime -= Time.deltaTime;
@@ -87,6 +93,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
+            sliderFill.gameObject.SetActive(true); // Cause bar toggling
             timer.gameObject.SetActive(false);
             curTime = maxGracePeriod;
             isInGrace = false;
@@ -101,9 +108,11 @@ public class LevelManager : MonoBehaviour
         endScreen.SetActive(true);
         timer.gameObject.SetActive(false);
         slider.gameObject.SetActive(false);
+        finalScoreText.text = "Final Score: " + comboMultiplier.score;
         Time.timeScale = 0f;
         musicManager.OnGameOver();
         flamethrower.OnGameOver();
+        enemyPool.DestroyAllInPool();
     }
 
 
@@ -112,5 +121,6 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Finish Clicked");
         Time.timeScale = 1f;
         _doRestartGame = true;
+        musicManager.OnGameStart();
     }
 }

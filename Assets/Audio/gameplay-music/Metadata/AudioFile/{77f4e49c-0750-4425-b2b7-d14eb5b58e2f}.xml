@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{77f4e49c-0750-4425-b2b7-d14eb5b58e2f}">
 		<property name="assetPath">
-			<value>Rock Layer - Final (?) Mix.wav</value>
+			<value>Rock Layer - Final Mix.wav</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

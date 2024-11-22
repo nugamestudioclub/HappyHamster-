@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{a2739e1c-cc0d-4b7d-a1e0-51e865566979}">
 		<property name="name">
-			<value>Flamethrower</value>
+			<value>Flamethrower Shooting</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{2340f344-6dba-4cfe-9361-3fc72492f4eb}</destination>
+			<destination>{0b7a05ea-a2ab-4915-ad99-64ea1de6f5cb}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{4b01a1ac-9f76-4e95-a904-48c1d89391d3}</destination>
@@ -101,9 +101,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{01531eeb-786d-4681-aabd-cdacd17f3353}">
-		<property name="volume">
-			<value>-0.5</value>
-		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>

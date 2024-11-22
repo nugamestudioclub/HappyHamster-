@@ -37,9 +37,16 @@ public class Overheatting : MonoBehaviour
     [SerializeField]
     private float slowCoolRate = 0.5f;
 
+    private FMOD.Studio.EventInstance flamethrowerAlarmInstance;
+    public FMODUnity.EventReference flamethrowerAlarmEvent;
+
+    private FMOD.Studio.EventInstance qteSuccessInstance;
+    public FMODUnity.EventReference qteSuccessEvent;
+
     void Start()
     {
-        
+        flamethrowerAlarmInstance = FMODUnity.RuntimeManager.CreateInstance(flamethrowerAlarmEvent);
+        qteSuccessInstance = FMODUnity.RuntimeManager.CreateInstance(qteSuccessEvent);
     }
 
     void RotateDial(float percentFull) {
@@ -79,6 +86,7 @@ public class Overheatting : MonoBehaviour
 
         if (!cooling)
         {
+            flamethrowerAlarmInstance.start();
             cooling = true;
             cooldownRate = baseCoolRate;
         }
@@ -92,6 +100,7 @@ public class Overheatting : MonoBehaviour
                 //GUST THINGS
                 cooldownRate = fastCoolRate;
                 hasHitQTE = true;
+                qteSuccessInstance.start();
             } else
             {
                 cooldownRate = slowCoolRate;
